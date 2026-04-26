@@ -1,0 +1,146 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{xcolor}
+
+% Pilihan Font: Times New Roman
+\usepackage{mathptmx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[indonesian]{babel}
+
+\usepackage{graphicx} % Untuk memasukkan gambar logo
+\usepackage{subcaption} % Untuk sub-gambar
+\usepackage{url} % Untuk URL di bibliografi
+\usepackage{xurl} % Memungkinkan URL dipenggal di mana saja (mencegah overflow)
+\urlstyle{same} % Menggunakan font yang sama dengan teks untuk URL
+\usepackage[authoryear]{natbib} % Format sitasi Harvard
+\setcitestyle{longnamesfirst} % Gunakan semua nama pada kemunculan pertama
+\providecommand{\keenanrefname}{DAFTAR PUSTAKA}
+\addto\captionsindonesian{\renewcommand{\refname}{\keenanrefname}}
+\providecommand{\harvardand}{dan} % Gunakan "dan" sebagai penghubung nama penulis
+\renewcommand{\harvardurl}[1]{\url{#1}} % Fix: Handle special characters in URLs
+\bibliographystyle{agsm} % Style Harvard (AGSM)
+
+% Margin: Kiri 4cm, Atas 4cm, Kanan 3cm, Bawah 3cm
+\usepackage{geometry}
+\usepackage{booktabs} % Untuk tabel tanpa garis vertikal
+\usepackage{longtable} % Untuk tabel yang bisa bersambung ke halaman berikutnya
+\usepackage{array} % Untuk pengaturan kolom tabel yang lebih fleksibel
+\geometry{
+    a4paper,
+    left=4cm,
+    top=4cm,
+    right=3cm,
+    bottom=3cm,
+    headheight=15pt
+}
+
+% Penyesuaian pemenggalan kata otomatis (hyphenation)
+\hyphenpenalty=500
+\exhyphenpenalty=500
+\sloppy
+
+% Spasi 1.5
+\usepackage{setspace}
+\onehalfspacing
+
+% Pengaturan Format Judul Bab dan Subbab
+\usepackage{titlesec}
+% Judul Bab: 14 pt, Bold, Kapital, Center
+\titleformat{\section}[block]{\fontsize{14}{17}\bfseries\centering}{\arabic{section}.}{1em}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{12pt}{8pt}
+
+% Judul Subbab: 12 pt, Bold. Angka latin misal 1.1.
+\titleformat{\subsection}[hang]{\fontsize{12}{15}\bfseries}{\arabic{section}.\arabic{subsection}.}{1em}{}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+
+% Block Style: tidak ada indentasi paragraf
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% Rata kiri kanan
+\usepackage{ragged2e}
+
+% Pengaturan Penomoran Halaman
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Bersihkan semua header/footer default
+\fancyhead[R]{\thepage} % Nomor halaman di kanan atas secara default
+\renewcommand{\headrulewidth}{0pt} % Hilangkan garis bawah di header
+
+% Definisi format halaman pertama pada setiap bab (diletakkan di tengah bawah)
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% Memaksa setiap bab baru (\section) dimulai di halaman baru dan menerapkan gaya "plain"
+\usepackage{etoolbox}
+
+% --- Pengaturan Tabel dan Gambar ---
+\usepackage{caption}
+% Judul Tabel di Atas, Judul Gambar di Bawah, Ukuran 12pt
+\captionsetup{font={normalsize}, labelfont=bf, skip=10pt, justification=centering}
+\captionsetup[sub]{font={normalsize}, labelfont=normalfont}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+
+% Penomoran mengikuti nomor Bab (Section), contoh: Tabel 2.1
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+
+\usepackage{float} % Untuk opsi [H] pada figure/table
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning}
+
+% --- Package Hyperref ---
+\usepackage[hidelinks,pdfnewwindow=true]{hyperref} 
+\usepackage{doi} % Untuk menampilkan link DOI secara otomatis
+\usepackage[all]{hypcap} % Untuk memastikan link gambar/tabel menuju ke posisi yang tepat
+
+\preto\section{\clearpage\thispagestyle{plain}}
+
+\begin{document}
+
+% --- BAGIAN AWAL ---
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\include{frontmatter/COVER}
+\include{frontmatter/ORISINALITAS}
+\include{frontmatter/PENGESAHAN}
+\include{frontmatter/ABSTRAK_ID}
+\include{frontmatter/ABSTRAK_EN}
+\include{frontmatter/KATA_PENGANTAR}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{Daftar Isi}
+\tableofcontents
+
+\clearpage
+\include{frontmatter/LISTS}
+
+\clearpage
+% --- BAGIAN POKOK ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\pagenumbering{arabic}
+
+\include{chapters/BAB1}
+\include{chapters/BAB2}
+\include{chapters/BAB3}
+\include{chapters/BAB4}
+\include{chapters/BAB5}
+
+\clearpage
+% --- BAGIAN AKHIR ---
+\pagestyle{plain}
+\include{chapters/DAFTAR_PUSTAKA}
+
+\end{document}
