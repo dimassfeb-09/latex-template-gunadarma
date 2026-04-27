@@ -1,0 +1,2589 @@
+BAB 1
+PENDAHULUAN
+1.1
+
+Latar Belakang
+
+Peningkatan penggunaan kendaraan bermotor di seluruh dunia telah memberikan banyak manfaat bagi kehidupan manusia, seperti meningkatkan mobilitas,
+mempercepat perdagangan dan memudahkan akses ke lokasi yang sulit dijangkau.
+Penggunaan kendaraan bermotor juga membawa dampak negatif, seperti kemacetan, polusi udara dan tingginya tingkat kecelakaan lalu lintas.
+Berdasarkan data dari Korlantas Polri (2022), angka kecelakaan lalu lintas di
+Indonesia mencapai 94,617 kasus sepanjang periode Januari-13 September 2022.
+Jumlah tersebut lebih tinggi 34,6% dibandingkan periode yang sama tahun sebelumnya, yang jumlahnya sekitar 70,294 ribu kasus.
+Faktor yang menyebabkan tingginya tingkat kecelakaan lalu lintas sangatlah
+beragam, di antaranya adalah faktor manusia, faktor kendaraan dan faktor lingkungan jalan. Faktor manusia adalah salah satu faktor utama yang berkontribusi
+pada terjadinya kecelakaan lalu lintas, seperti mengemudi dalam keadaan mabuk,
+mengemudi dengan kecepatan yang berlebihan dan mengemudi dalam keadaan lelah atau mengantuk.
+Menurut Sleep Foundation (2022) salah satu faktor penyebab dari berkurangnya
+konsentrasi dari pengemudi adalah rasa kantuk. Rasa kantuk membuat seseorang
+menjadi kurang memperhatikan lingkungan sekitar dan lebih mudah terganggu. Hal
+ini memperlambat waktu reaksi pengemudi, sehingga lebih sulit untuk menghindari
+bahaya di jalan raya. Kurang tidur juga berkaitan dengan pengambilan keputusan
+yang lebih buruk, yang dapat menyebabkan pengambilan risiko di belakang kemudi.
+Banyak pengemudi yang lebih memilih mengabaikan rasa kantuknya dan meneruskan perjalanannya hingga sampai ketujuan, padahal hal ini dapat mengancam
+keselamatan pengemudi. Beberapa tahun terakhir ini, konsentrasi yang kurang saat sedang mengemudi menjadi salah satu penyebab terjadinya banyak kecelakaan
+(Jupiyandi et al., 2019).
+Perkembangan teknologi meningkat sangat pesat sekarang ini, sudah berbagai
+teknologi terbaru dan mutakhir di berbagai fasilitas, ada kamera pengaman berbasis IoT, serta alat pendeteksi wajah sebagai absensi dan pembaruan teknologi lainya.
+
+1
+
+2
+Perkembangan sistem identifikasi di lingkungan masyarakat ataupun instansi sangat
+cepat, salah satu sistem identifikasi yang dikembangkan berdasarkan ciri wajah sescorang yang memiliki kecepatan dan keakuratan tinggi adalah pengenalan wajah
+(Cvahte Ojsterek dan Topolek, 2019).
+Pengenalan wajah merupakan salah satu permasalahan dalam computer vision
+yang berhubungan dengan pendeteksian suatu objek dalam citra dan video digital.
+Menurut R. Girshick, J. Donahue, T. Darrell dan J. Malik (2014) yang dikutip dalam (Karlina dan Indarti, 2020) computer vision merupakan salah satu cabang dari
+kecerdasan buatan (artificial intelligence) yang difokuskan pada pengembangan algoritma untuk menganalisis informasi dari suatu citra ke dalam bentuk informasi
+yang sebenarnya di dunia nyata. Saat ini deep learning banyak digunakan pada
+penelitian mengenai computer vision. Terdapat dua pendekatan dalam pengenalan
+objek menggunakan deep learning yaitu pendekatan berdasarkan region proposal
+atau metode dua tahap dan pendekatan berdasarkan metode regresi atau metode satu tahap (Karlina dan Indarti, 2020).
+Teknik deep learning digunakan dalam deteksi objek (object detection) untuk
+mengenali objek dalam gambar yang telah ditentukan sebelumnya. Salah satu contohnya adalah deteksi kantuk. Dalam deteksi objek, kotak pembatas (bounding box)
+digunakan untuk menandai setiap objek yang terdeteksi dan menentukan luasnya.
+Tujuannya adalah untuk memastikan bahwa setiap contoh objek dari kategori yang
+telah ditentukan teridentifikasi dengan tepat, yang sangat penting dalam berbagai
+aplikasi seperti sistem pengemudi otomatis (Liu et al., 2018).
+You Only Look Once (YOLO) adalah sebuah algoritma deep learning yang dikembangkan untuk mendeteksi scbuah objek secara realtime. Sebuah model diterapkan pada sebuah citra di beberapa lokasi dan skala (Hidayatulloh, 2021). Penelitian menggunakan YOLO dilakukan oleh Faraji et al. (2021) untuk mendeteksi kantuk. CNN YOLO digunakan untuk mendeteksi wajah, sementara LSTM diterapkan untuk mengklasifikasikan objek yang terdeteksi. Hasil penelitian menunjukkan
+tingkat akurasi sebesar 91,7% (Faraji et al., 2021 ). Penelitian yang dilakukan oleh
+Sinha et al. (2021) membandingkan efektivitas algoritma Viola Jones, DLib dan
+YOLOv3 untuk mendeteksi kantuk dan hasilnya menunjukkan bahwa YOLO lebih
+akurat daripada Viola Jones dan DLib (Sinha et al., 2021).
+You Only Look Once (YOLO) telah mengalami beberapa iterasi, termasuk YOLOv1, YOLOv2, YOLOv3, YOLOv4 dan YOLOv5. Setiap versi menghadirkan
+peningkatan dalam kecepatan dan akurasi deteksi objek. YOLOv5 merupakan proyek open source yang merupakan ekstensi dari YOLOv3 dengan fokus pada skalabilitas, fleksibilitas dan dukungan untuk perakitan model serta ekspor ke format
+
+3
+ONNX, CoreML dan TFLite. YOLOv5 tetap menjadi pilihan populer bagi pengembang yang menginginkan deteksi objek cepat dengan fleksibilitas lebih besar
+(Jay, 2022).
+Perbandingan juga dilakukan pada YOLOv5 dengan versi terbaru dari YOLO
+yaitu YOLOv8. Hasil perbandingan menunjukkan YOLOv5 lebih cocok untuk perangkat tanpa dukungan GPU, sedangkan YOLOv8 lebih unggul dalam kecepatan
+dengan dukungan GPU. Keduanya menunjukkan kecepatan dan akurasi yang mengesankan dibandingkan dengan versi YOLO sebelumnya (Munawar, 2023).
+Berdasarkan uraian permasalahan di atas maka penelitian ini akan mengimplementasikan YOLOv5 untuk mendeteksi kantuk pada pengemudi kendaraan bermotor secara realtime. Model YOLOv5 yang diperoleh selanjutnya digunakan untuk
+mengenali objek secara realtime.
+
+1.2
+
+Rumusan Masalah
+
+Berdasarkan latar belakang yang telah dijelaskan, dalam penelitian ini merumuskan masalah yang lebih ditekankan kepada:
+1. Bagaimana implementasi deteksi kantuk menggunakan YOLOv5?
+2. Bagaimana performa YOLOv5 dalam mendeteksi kantuk pada pengemudi
+kendaraan bermotor?
+3. Bagaimana melakukan deployment model YOLOv5 untuk deteksi kantuk?
+
+1.3
+
+Batasan Masalah
+
+Berdasarkan perumusan masalah diatas, ditentukan batasan masalah sebagai
+berikut:
+1. Deteksi kantuk secara realtime pada pengemudi berbasis aplikasi dekstop
+menggunakan kamera webcam.
+2. Dataset yang digunakan untuk melatih model diperoleh melalui website Roboflow.com sebanyak 261 gambar.
+3. Dataset yang digunakan untuk testing diperoleh menggunakan kamera webcam beresolusi 1080p sebanyak 325 gambar.
+
+4
+4. Pelabelan dataset dibagi menjadi 2 kelas, yaitu kantuk dan terjaga.
+5. Program dibuat menggunakan bahasa pemrograman Python.
+
+1.4
+
+Tujuan Penelitan
+
+Berdasarkan rumusan masalah yang ditentukan, maka tujuan penelitian ini dilakukan adalah sebagai berikut:
+1. Mengimplementasikan deteksi kantuk menggunakan YOLOv5 pada dataset
+yang telah disediakan.
+2. Mendapatkan performa YOLOv5 dalam mendeteksi kantuk pada pengemudi
+kendaraan bermotor.
+3. Melakukan deployment model YOLOv5 untuk deteksi kantuk.
+
+1.5
+
+Metode Penelitian
+
+Bagian ini menjelaskan tahapan penelitian dengan menggunakan Cross-Industry
+Standard Process for Data Mining (CRISP-DM). Penelitian ini dilakukan melalui
+beberapa tahap, antara lain:
+1. Business Understanding
+Memahami tujuan bisnis dari penelitian ini, yaitu mencegah terjadinya kecelakaan yang disebabkan oleh pengemudi yang mengantuk dengan memberikan peringatan dan mengenali tanda-tanda kantuk berdasarkan wajah pengemudi. Penting untuk memahami bagaimana deteksi kantuk dapat membantu
+mencapai tujuan bisnis tersebut.
+2. Data Understanding
+Mengumpulkan dataset berupa gambar yang mencakup pengemudi yang
+mengantuk dan yang tidak mengantuk. Dataset yang digunakan dikelompokkan menjadi 2 bagian, dataset training dan dataset testing.
+3. Data Preparation
+Dataset yang telah dikumpulkan akan dievaluasi dan dipersiapkan untuk melatih dan menguji model deteksi kantuk. Langkah-langkah yang dilakukan
+
+5
+antara lain penghapusan gambar yang buram, gelap, atau tidak terlalu jelas,
+mengubah ukuran gambar, serta melakukan proses pelabelan berdasarkan kelasnya yang digunakan dalam melatih model.
+4. Modeling
+Melatih model deteksi kantuk pada dataset gambar yang telah diproses dan
+diolah dengan menggunakan algoritma YOLOv5 untuk mendeteksi tandatanda kantuk pada pengemudi.
+5. Evaluation
+Melakukan pengujian kinerja model dengan menggunakan dataset testing untuk memastikan keandalan dan akurasi model. Mengevaluasi performa model
+menggunakan metrik evaluasi seperti accuracy, precision dan recall,.
+6. Deployment
+Mengimplementasikan model deteksi kantuk berbasis aplikasi desktop menggunakan kamera webcam untuk deteksi secara realtime, menggunakan OpenCV dan Python.
+
+1.6
+
+Sistematika Penulisan
+
+Pada sistematika penulisan ini, menyajikan gambaran umum mengenai permasalahan tentang materi yang akan dibahas. Sistematika penelitian ini adalah sebagai
+berikut. BAB 1 PENDAHULUAN menguraikan mengenai latar belakang, rumusan masalah, batasan masalah, tujuan penelitian, metode penelitian dan sistematika
+penulisan. BAB 2 TINJAUAN PUSTAKA menjelaskan beberapa teori yang berkaitan dengan konsep dan penjelasan metode yang digunakan. Teori yang menunjang dan menjadi dasar pada penelitian, seperti penjelasan tentang kantuk, Python,
+YOLOv5, library OpenCV dan ONNX. BAB 3 METODOLOGI PENELITIAN
+membahas tahapan penelitian dalam mendeteksi kantuk pengemudi kendaraan bermotor secara realtime menggunakan algoritma YOLOv5. BAB 4 HASIL DAN
+PEMBAHASAN, berisikan tentang hasil dan pembahasan dari tahapan yang dilakukan pada metodologi penelitian. BAB 5 KESIMPULAN DAN SARAN menjelasan kesimpulan dari hasil penelitian setelah semua tahap selesai dan saran untuk
+pengembangan selanjutnya.
+
+BAB 2
+TINJAUAN PUSTAKA
+2.1
+
+Pengolahan Citra
+
+Pengolahan citra (image processing) merupakan bidang ilmu yang mempelajari
+tentang bagaimana suatu citra itu dibentuk, diolah dan dianalisis sehingga menghasilkan informasi yang dapat dipahami oleh manusia (Ratna, 2020). Menurut Widyaningsih (2017) yang dikutip dalam (Jumadi et al., 2021) pengolahan citra merupakan cabang ilmu dalam Artifical Intelegence yang menggunakan objek citra
+dalam bentuk digital untuk penyelesaian kasusnya. Metode dalam citra dapat digunakan baik perhitungan matematis pada objek secara piksel ataupun geometris.
+Masing-masing objek citra memiliki nilai perbedaan yang dapat diperhitungkan secara matematis, sehingga menunjukkan ciri yang berbeda antara objek satu dengan
+yang lain. Penciri dari perbedaan setiap objek dapat ditentukan dari warna, tekstur,
+ataupun bentuk (Jumadi et al., 2021).
+Pengolahan citra bertujuan untuk:
+1. Memperbaiki kualitas gambar, dilihat dari aspek radiometric dan aspek geometric. Aspek radiometric terdiri dari peningkatan kontras, restorasi citra,
+transformasi warna sedangkan aspek geometric terdiri dari rotasi, skala, translasi, transformasi geometric).
+2. Melakukan proses penarikan informasi atau deskripsi obyek atau pengenalan
+obyek yang terkandung pada citra.
+3. Melakukan pemilihan citra ciri (feature images) yang optimal untuk tujuan
+analisis.
+4. Melakukan kompresi atau reduksi data untuk tujuan penyimpanan data, transmisi data dan waktu proses data. melakukan kompresi atau reduksi data untuk tujuan penyimpanan data, transmisi data dan waktu proses data.
+
+6
+
+7
+
+2.2
+
+Citra
+
+Menurut Wakhidah (2012) yang dikutip dalam (Ardiansyah et al., 2022) citra
+dikelompokkan menjadi citra tampak dan citra tak tampak. Citra tampak dalam
+kehidupan sehari- hari adalah foto keluarga, lukisan, apa yang tampak di layar monitor. Sedangkan citra tak tampak misalnya gambar dalam file (citra digital), citra
+yang direpresentasikan dengan fungsi matematis. Agar dapat dilihat manusia, citra
+tak nampak ini harus dirubah dulu menjadi citra tampak, misalnya dengan menampilkannya pada monitor atau dicetak pada kertas. Hanya citra digital yang dapat
+diolah menggunakan komputer dari semua citra yang ada. Jenis citra lain, jika hendak diolah dengan komputer, harus diubah terlebih dahulu menjadi citra digital.
+Proses perubahan citra lain tersebut menjadi citra digital disebut digitasi. Digitasi dapat dilakukan dengan menggunakan alat atau sensor seperti kamera, webcam
+scanner dan sebagainya (Ardiansyah et al., 2022).
+
+2.3
+
+Citra Digital
+
+Citra digital merupakan sebuah larik (array) yang berisi nilai-nilai real maupun
+komplek yang direpresentasikan dengan deretan bit tertentu . Suatu citra dapat didefinisikan sebagai fungsi f(x,y) berukuran M baris dan N kolom, dengan x dan y
+adalah koordinat spasial dan amplitudo f di titik koordinat (x,y) dinamakan intensitas atau tingkat keabuan dari citra pada titik tersebut. Apabila nilai x, y dan nilai
+amplitudo f secara keseluruhan berhingga (finite) dan bernilai diskrit maka dapat
+dikatakan bahwa citra tersebut adalah citra digital (Yulianti S, 2020).
+
+2.4
+
+Jenis - Jenis Citra
+
+Nilai suatu piksel memiliki nilai dalam rentang tertentu, dari nilai minimum
+sampai nilai maksimum, jangkauan yang digunakan berbeda-beda tergantung dari
+jenis warnanya. Secara umum jangkauannya adalah 0-255. Menurut Darma (2010)
+yang dikutip dalam (Andika dan Hafiz, 2019) berikut adalah jenis-jenis citra berdasarkan nilai pikselnya:
+
+2.4.1
+
+Citra Biner
+
+Citra biner adalah citra digital yang hanya memiliki dua kemungkinan nilai piksel yaitu hitam dan putih. Citra biner hanya membutuhkan satu bit untuk mewakili
+
+8
+nilai setiap piksel dari citra biner.
+
+2.4.2
+
+Citra Grayscale
+
+Citra grayscale adalah citra digital yang hanya memiliki satu nilai kanal pada
+setiap pikselnya, dengan kata lain nilai bagian red = green = blue. Citra grayscale
+memiliki kedalaman warna 8 bit (256 kombinasi warna keabuan).
+
+2.4.3
+
+Citra Warna (8 Bit)
+
+Citra warna (8 bit) terdiri dari piksel-piksel yang masing-masing dapat merepresentasikan kombinasi maksimum 256 warna. Setiap piksel pada citra warna mewakili warna yang merupakan kombinasi dari tiga warna dasar yaitu merah, hijau,
+dan biru yang biasa disebut citra Red, Green, Blue (RGB).
+Tabel 2.1 Citra 8 bit
+Bit -7
+R
+
+Bit-6
+R
+
+Bit-5
+R
+
+Bit-4
+G
+
+Bit-3
+G
+
+Bit-2
+G
+
+Bit-1
+B
+
+Bit-0
+B
+
+Ada dua jenis citra warna 8 bit. Pertama, citra warna 8 bit dengan menggunakan
+palet warna 256 dengan setiap paletnya memiliki pemetaan nilai (colormap) RGB
+tertentu seperti pada Tabel 2.1. Model ini lebih sering digunakan. Kedua, setiap
+piksel memilki format 8 bit. Bentuk kedua dinamakan 8 bit truecolor. Dapat dilihat
+pada Gambar 2.1.
+
+Gambar 2.1 8 Bit Truecolor
+Sumber: (Andika dan Hafiz, 2019)
+
+2.4.4
+
+Citra Warna (16 Bit)
+
+Citra warna 16 bit biasanya disebut sebagai citra highcolor. Setiap pikselnya
+diwakili dengan 2 byte memory (16 bit). Warna 16 bit memiliki 65.536 warna.
+
+9
+Tabel 2.2 Citra 16 Bit
+Bit
+-15
+
+Bit
+-14
+
+Bit
+-13
+
+Bit
+-12
+
+Bit
+-11
+
+Bit
+-10
+
+Bit
+-9
+
+Bit
+-8
+
+Bit
+-7
+
+Bit
+-6
+
+Bit
+-5
+
+Bit
+-4
+
+Bit
+-3
+
+Bit
+-2
+
+Bit
+-1
+
+Bit
+-0
+
+R
+
+R
+
+R
+
+R
+
+R
+
+G
+
+G
+
+G
+
+G
+
+G
+
+G
+
+B
+
+B
+
+B
+
+B
+
+B
+
+Tabel 2.2 menampilkan nilai-nilai warna dalam format bit. Nilai merah dan
+biru mengambil tempat di 5 bit di kanan dan kiri. Komponen hijau memiliki 5 bit
+ditambah 1 bit ekstra. Pemilihan komponen hijau dengan deret 6 bit dikarenakan
+penglihatan manusia lebih sensitif terhadap warna hijau. Gambar 2.2 menampilkan
+deret warna yang dihasilkan dari warna 16 bit.
+
+Gambar 2.2 Bit Highcolour
+Sumber: (Andika dan Hafiz, 2019)
+
+2.4.5
+
+Citra Warna (24 Bit)
+
+Setiap piksel dari citra warna 24 bit diwakili dengan 24 bit sehingga total
+16.777.216 variasi warna. Variasi ini tentunya sudah sangat memvisualisasikan seluruh warna yang dapat dilihat oleh penglihatan manusia. Setiap poin informasi
+piksel (RGB) disimpan ke dalam 1 byte data. 8 bit pertama menyimpan nilai biru,
+kemudian diikuti dengan nilai hijau pada 8 bit kedua dan pada 8 bit terakhir merupakan warna merah. Gambar 2.3 menampilkan contoh citra digital yang memiliki
+warna 24 bit.
+
+10
+
+Gambar 2.3 Citra Warna 24 Bit
+Sumber: (Andika dan Hafiz, 2019)
+
+2.5
+
+Kecelakaan Lalu Lintas
+
+Definisi kecelakaan lalu lintas menurut UU No.22 Tahun 2009 adalah suatu peristiwa di jalan yang tidak diduga dan tidak disengaja yang dapat melibatkan kendaraan dengan atau tanpa pengguna jalan lain yang dapat mengakibatkan korban
+manusia dan/atau kerugian harta benda lainnya. Menurut UU No.22 Tahun 2009
+kecelakaan lalu lintas yang terjadi dapat digolongkan menjadi 3 yaitu: a) Kecelakaan lalu lintas ringan, yang merupakan kecelakaan yang dapat mengakibatkan kerusakan kendaraan dan/atau kerusakan pada barang; b) Kecelakaan lalu lintas sedang,
+yang merupakaan kecelakaan yang dapat mengakibatkan luka ringan dan kerusakan kendaraan dan/atau kerusakan pada barang; c) Kecelakaan lalu lintas berat, yang
+merupakan kecelakaan yang dapat mengakibatkan korban dapat meninggal dunia
+dan/atau dapat mengalami luka berat (Nanda et al., 2022).
+Faktor manusia merupakan faktor yang paling dominan dalam kecelakaan. Manusia menggunakan jalan sebagai pejalan kaki dan pengemudi kendaraan. Pejalan
+kaki tersebut menjadi korban kecelakaan dan dapat juga menjadi penyebab kecelakaan. Pengemudi kendaraan merupakan penyebab kecelakaan yang utama, sehingga paling sering diperhatikan. Hampir semua kejadian kecelakaan diawali dengan pelanggaran aturan lalu lintas. Tidak sedikit jumlah kecelakaan yang terjadi di
+jalan raya diakibatkan karena ulah pengemudi, mulai dari mengendarai dalam keadaan kelelahan, mengantuk, tidak menggunakan helm atau sabuk pengaman saat
+berkendara, bermain handphone saat berkendara, mengendarai kendaraan dengan
+kecepatan tinggi dan lain sebagainya (Nanda et al., 2022).
+
+11
+
+2.6
+
+Kantuk
+
+Kantuk (Drowsiness) adalah kondisi ketika seseorang atau individu membutuhkan tidur. Kondisi ini sering dialami pada malam hari ataupun siang hari dan merupakan hal yang wajar. Rasa kantuk pada umumnya disebabkan karena kurangnya
+waktu tidur yang cukup, meskipun terlihat sederhana kantuk dapat memicu timbulnya sebuah masalah. Mengantuk dapat disebabkan oleh beberapa faktor antara lain:
+kelelahan bekerja, kurang tidur dan lain-lain. Kondisi mengantuk pada seseorang
+dapat dilihat dari kondisi kelopak mata mulai berat, pandangan yang kabur , seringnya menguap yang menandakan kurangnya suplai oksigen ke otak. Pengemudi
+yang mengantuk di haruskan beristirahat sejenak. Manfaat dari tidur selain untuk
+memulihkan energi juga berfungsi untuk mengembalikan fokus dari pengemudi itu
+sendiri supaya terhindar dari resiko kecelakaan yang tinggi (Maulana, 2022).
+Menurut Kementrian Kesehatan Republik Indonesia (2022) umumnya untuk
+orang dewasa setiap hari 7 hingga 8 jam tidur nyenyak terutama di malam hari
+diperlukan untuk bekerja dengan baik dan untuk melakukan kegiatan sehari-hari
+pada hari berikutnya. Sebagian besar pengemudi profesional tidak mendapatkan istirahat malam yang cukup, ada lebih banyak kemungkinan bagi pengemudi seperti
+itu untuk mengantuk saat mengemudi. Jika rasa kantuk yang dialami pengemudi
+diperingatkan tepat waktu, beberapa kecelakaan fatal dapat dihindari (Mirunalini et
+al., 2021).
+
+2.7
+
+Artificial Intelligence
+
+Artificial intelligence adalah kecerdasan yang ditambahkan kepada suatu sistem
+yang bisa diatur dalam konteks ilmiah atau bisa disebut juga artificial intelligence
+atau hanya disingkat AI, didefinisikan sebagai kecerdasan entitas ilmiah. Andreas
+Kaplan dan Michael Haenlein mendefinisikan kecerdasan buatan sebagai kemampuan sistem untuk menafsirkan data eksternal dengan benar, untuk belajar dari data
+tersebut dan menggunakan pembelajaran tersebut guna mencapai tujuan dan tugas
+tertentu melalui adaptasi yang fleksibel. Sistem seperti ini umumnya dianggap sebagai komputer. Kecerdasan diciptakan dan dimasukkan kedalam suatu mesin atau
+komputer agar dapat melakukan pekerjaan seperti yang dapat dilakukan oleh manusia (Siahaan et al., 2020). Beberapa macam bidang yang menggunakan kecerdasan
+buatan antara lain sistem pakar, permainan komputer (games), logika fuzzy, jaringan
+saraf tiruan dan robotika.
+
+12
+
+2.8
+
+Machine Learning
+
+Istilah machine learning pertama kali didefinisikan oleh Arthur Samuel pada
+tahun 1959. Menurut Arthur Samuel, machine learning adalah suatu bidang ilmu komputer yang memberikan kemampuan pembelajaran kepada komputer untuk
+mengetahui sesuatu tanpa pemrograman yang jelas (Fermansah, 2019). Menurut
+Mohri et al. (2012) yang dikutip dalam (Fermansah, 2019) machine learning dapat
+didefinisikan sebagai metode komputasi berdasarkan pengalaman untuk meningkatkan performa atau membuat prediksi yang akurat. Definisi pengalaman ialah
+informasi sebelumnya yang telah tersedia dan bisa dijadikan data pembelajar.
+Dalam pembelajaran machine learning, terdapat skenario-skenario seperti:
+1. Supervised Learning
+Penggunaan skenario supervised learning, pembelajaran menggunakan masukan data pembelajaran yang telah diberi label, setelah itu membuat prediksi
+dari data yang telah diberi label.
+2. Unsupervised Learning
+Penggunaan skenario unsupervised learning, pembelajaran menggunakan
+masukan data pembelajaran yang tidak diberi label, setelah itu mencoba untuk
+mengelompokan data berdasarkan karakteristik-karakteristik yang ditemui.
+3. Reinforcement Learning
+Pada skenario reinforcement learning fase pembelajaran dan tes saling dicampur untuk mengumpulkan informasi pembelajar secara aktif dengan berinteraksi ke lingkungan sehingga untuk mendapatkan balasan untuk setiap aksi
+dari pembelajar
+
+2.9
+
+Deep Learning
+
+Deep learning adalah salah satu bidang dari machine learning yang menggunakan jaringan syaraf tiruan untuk aplikasi permasalahan dengan dataset yang besar.
+Teknik deep learning dapat membangun arsitektur yang amat kuat untuk supervised
+learning. Penambahan lapisan yang lebih banyak dapat membuat model pembelajaran bisa mewakili data citra yang menggunakan label dengan lebih bagus. Pada
+machine learning, terdapat teknik untuk memakai ekstraksi fitur dari data pelatihan dan algoritma pembelajaran khusus untuk melakukan klasifikasi citra maupun
+
+13
+mengenali suara. Metode tersebut masih memiliki beberapa kekurangan baik dalam hal kecepatan dan akurasi (Imantiyar, 2021).
+Aplikasi konsep jaringan saraf tiruan yang dalam (banyak lapisan) dapat ditangguhkan pada algoritma machine learning yang sudah ada sehingga komputer
+sekarang bisa belajar dengan kecepatan, akurasi dan skala yang besar. Prinsip ini
+terus berkembang hingga deep learning semakin sering digunakan pada komunitas
+riset dan industri untuk membantu memecahkan banyak masalah data besar seperti computer vision, speech recognition dan natural language processing. Feature
+engineering adalah salah satu fitur utama dari deep learning untuk melakukan ekstraksi pola yang dapat digunakan untuk memudahkan model membedakan kelas.
+Feature engineering juga dapat diartikan sebagai teknik yang sangat penting meraih hasil yang baik pada saat melakukan prediksi. Hal tersebut masih sulit untuk
+dapat dipelajari dan dikuasai karena kumpulan data dan jenis data yang berbeda
+memerlukan pendekatan teknik yang berbeda juga (Imantiyar, 2021).
+Model yang kompleks tentunya akan mebutuhkan waktu pelatihan yang lama
+sehingga di dunia deep learning penggunaan GPU sudah sangatlah umum (Munir,
+2004)
+
+2.10 Convolutional Neural Network (CNN)
+CNN merupakan operasi konvolusi yang menggabungkan beberapa lapisan
+pemrosesan, menggunakan beberapa elemen yang beroperasi secara paralel dan terinspirasi oleh sistem saraf biologis. Pada CNN setiap neuron dipresentasikan dalam
+bentuk 2 dimensi, sehingga metode ini cocok untuk pemrosesan dengan input berupa citra (Arrofiqoh dan Harintaka, 2018). Gambar 2.4 menampilkan arsitektur dari
+CNN.
+
+Gambar 2.4 Arsitektur CNN
+Sumber: (Sofia, 2018)
+
+14
+Gambar 2.4 menjelaskan bahwa arsitektur CNN terdiri dari dua tahap utama,
+yaitu feature learning dan classification.
+
+2.10.1
+
+Feature Learning
+
+Lapisan-lapisan yang terdapat dalam feature learning berguna untuk mentranslasikan suatu input menjadi menjadi features berdasarkan ciri dari input tersebut
+yang berbentuk angka-angka dalam vektor. Lapisan ekstraksi fitur ini terdiri dari
+convolutional layer dan pooling layer (Sofia, 2018).
+1. Convolutional Layer
+Lapisan yang menghitung output dari neuron yang terhubung ke daerah lokal dalam input, masing-masing menghitung produk titik antara bobot dan
+wilayah kecil yang terhubung ke dalam volume input.
+2. Pooling Layer
+Lapisan yang mengurangi dimensi dari feature map atau lebih dikenal dengan
+langkah untuk downsampling, sehingga mempercepat komputasi karena parameter yang harus di-update semakin sedikit dan mengatasi overfitting.
+
+2.10.2
+
+Classification
+
+Lapisan ini berguna untuk mengklasifikasikan tiap neuron yang telah diekstraksi
+fitur pada sebelumnya (Sofia, 2018). Classificatfion terdiri dari:
+1. Flatten
+Membentuk ulang fitur (reshape feature map) menjadi sebuah vektor agar
+dapat gunakan sebagai input dari fully-connected layer.
+2. Fully-connected
+Lapisan ini akan menghitung skor kelas. Seperti jaringan syaraf biasa dan
+seperti namanya, setiap neuron dalam lapisan ini akan terhubung ke semua
+angka dalam volume.
+3. Softmax
+Fungsi Softmax menghitung probabilitas dari setiap kelas target atas semua
+kelas target yang memungkinkan dan akan membantu untuk menentukan kelas target untuk input yang diberikan. Keuntungan utama menggunakan Softmax adalah rentang probabilitas output dengan nilai 0 hingga 1 dan jumlah
+semua probabilitas akan sama dengan satu.
+
+15
+
+2.11 Computer Vision
+Computer vision merupakan suatu bidang yang berhubungan dengan pengolahan otomatis suatu citra berbasis komputer untuk mengekstrak dan meinterpretasikan
+suatu informasi yang didapatkan. Sistem kerja computer vision adalah dengan cara
+memproses data citra yang diinput dan menggunakan kombinasi algoritma pengolahan citra serta kecerdasan buatan sehingga dapat menghasilkan suatu informasi
+dari citra tersebut (Kuddus, 2021). Gambar 2.5 menampilkan tahapan proses computer vision.
+
+Gambar 2.5 Tahapan Proses Computer Vision
+Sumber: (Pamungkas, 2019)
+Computer vision merupakan cabang dari teknik artificial intelligence yang mencoba meniru cara kerja sistem visual manusia. Tujuan utama computer vision adalah
+untuk menganalisis objek fisik yang nyata berdasarkan image yang ditangkap dari
+sensor, dalam prosesnya menurut (Ramadhan, 2022) computer vision memiliki 4
+tahapan yaitu:
+1. Image Acquisition
+Proses ini melakukan penangkapan informasi visual dan merubah sinyal analog menjadi data digital yang kemudian diproses oleh komputer.
+2. Image Processing
+Proses yang memiliki input dan output-nya berupa citra. Suatu citra dimodifikasi ke bentuk citra lain yang memiliki kualitas lebih baik.
+3. Image Analysis
+Proses yang memiliki input berupa citra dengan output bukan citra akan tetapi
+berupa hasil pengukuran terhadap citra tersebut.
+4. Image Understanding
+Proses ini merupakan proses yang memiliki input berupa citra dengan outputnya adalah gambaran tingkat tinggi dari citra tersebut
+
+16
+
+2.12
+
+Python
+
+Menurut Ljubomir Perkovic (2012) yang dikutip dalam (Al Faruqi, 2021)
+Python adalah bahasa pemrograman interpretatif multiguna dengan filosofi perancangan yang berfokus pada tingkat keterbacaan kode. Python diklaim sebagai bahasa yang menggabungkan kapabilitas, kemampuan, dengan sintaksis kode yang
+sangat jelas dan dilengkapi dengan fungsionalitas pustaka standar yang besar serta komprehensif. Python bisa dibilang bahasa pemrograman dengan tujuan umum
+yang dikembangkan secara khusus untuk membuat source code mudah dibaca (Al
+Faruqi, 2021). Python juga memiliki library yang lengkap sehingga memungkinkan
+programmer untuk membuat aplikasi yang mutakhir dengan menggunakan source
+code yang tampak sederhana. Pendeteksian wajah dengan Python dapat dilakukan
+dengan menggunakan library OpenCV (Setiawan et al., 2021).
+
+2.13
+
+OpenCV
+
+OpenCV merupakan salah satu library yang memiliki fungsi-fungsi pemrograman pada computer vision secara real-time. OpenCV bersifat open-source yang
+dapat digunakan untuk membantu hal-hal yang bersifat akademis dan komersil. Pada OpenCV terdapat antarmuka untuk C, C++, Python dan Java yang dapat dijalankan pada Windows, Mac, Linux dan Android (Susanto et al., 2021). OpenCV
+memiliki lebih dari 2500 algoritma yang telah dioptimalkan.
+
+2.14
+
+YOLO
+
+You Only Look Once (YOLO) adalah sebuah algoritma yang dikembangkan untuk mendeteksi sebuah objek secara realtime. Menurut Unsky (2017) yang dikutip dalam (Rahma et al., 2021) sistem pendeteksian yang dilakukan adalah dengan
+menggunakan repurpose classifier atau localizer untuk melakukan deteksi. Sebuah
+model diterapkan pada sebuah citra di beberapa lokasi dan skala daerah dengan citra
+yang diberi score paling tinggi akan dianggap sebagai sebuah pendeteksian (Rahma
+et al., 2021).
+YOLO menggunakan pendekatan jaringan saraf tiruan untuk mendeteksi objek
+pada sebuah citra. Jaringan ini membagi citra menjadi beberapa wilayah dan memprediksi setiap kotak pembatas dan probabilitas untuk setiap wilayah. Kotak-kotak
+pembatas ini kemudian dibandingkan dengan probabilitas yang diprediksi. YOLO
+memiliki beberapa kelebihan dibandingkan dengan sistem yang berorientasi pada
+
+17
+classifier, terlihat dari seluruh citra pada saat dilakukan test dengan prediksi yang
+diinformasikan secara global pada citra. Hal tersebut juga sintesis jaringan saraf ini
+tidak seperti sistem Region-Convolutional Neural Network (R-CNN) yang membutuhkan ribuan untuk sebuah citra sehingga membuat YOLO lebih cepat hingga
+beberapa kali daripada R-CNN (Rahma et al., 2021).
+
+2.14.1
+
+Versi YOLO
+
+Dalam proses perkembangannya, You Only Look Once (YOLO) telah merilis
+beberapa versi yang mengalami peningkatan dan perbaikan pada setiap iterasinya
+(Jiang et al., 2022), antara lain:
+1. YOLO, divisi jaringan bertanggung jawab untuk deteksi, confidence loss.
+2. YOLOv2, jangkar dengan K-means ditambahkan, pelatihan dua tahap, jaringan konvolusi penuh.
+3. YOLOv3, deteksi multi-skala dengan menggunakan FPN.
+4. YOLOv4, SPP, fungsi aktivasi MISH, peningkatan data mosaik / campuran,
+Generalized Intersection Over Union (GIOU).
+5. YOLOv5, kontrol fleksibel ukuran model, penerapan fungsi aktivasi hardswish dan peningkatan data.
+
+2.14.2
+
+Kelebihan YOLO
+
+YOLO memiliki Beberapa kelebihan menurut (Nissa, 2023) di antaranya sebagai berikut:
+1. Dapat melakukan pengenalan objek secara realtime.
+2. Tergolong cepat karena arsitektur frame detection-nya menggunakan model
+regresi dan tidak dibutuhkan pipeline yang kompleks.
+3. Mempertimbangkan unsur global dari gambar yang diprediksi, secara implisit
+bisa mengodekan informasi kontekstual dari gambar.
+4. Mempelajari representasi objek yang dapat digeneralisasikan, oleh karena itu
+mudah diterapkan pada input gambar baru.
+
+18
+
+2.14.3
+
+Kekurangan YOLO
+
+Meskipun YOLO memiliki banyak hal untuk ditawarkan untuk deteksi objek,
+menurut (Nissa, 2023) YOLO juga memiliki kekurangan yaitu walaupun bisa cepat
+mengidentifikasi objek pada gambar, YOLO harus berupaya keras untuk melokalisasi beberapa objek secara tepat, terutama objek berukuran kecil.
+
+2.15 Epoch
+Epoch adalah ketika seluruh dataset sudah melalui proses training pada Neural Netwok sampai dikembalikan ke awal untuk sekali putaran, karena satu Epoch
+terlalu besar untuk dimasukkan (feeding) kedalam komputer maka dari itu perlu
+membaginya kedalam satuan kecil (batches) (Rahma et al., 2021).
+Ketika jumlah epoch terlalu kecil, model cenderung underfitting karena tidak
+memiliki cukup waktu untuk menyesuaikan diri dengan kompleksitas data pelatihan. Sebaliknya, ketika jumlah epoch terlalu besar, model cenderung overfitting
+karena terlalu fokus pada data pelatihan dan tidak dapat menggeneralisasi dengan
+baik pada data yang belum dilihat sebelumnya (Ruslidiantoro, 2021).
+
+Gambar 2.6 Epoch
+Sumber: (Rahma et al., 2021)
+Gambar 2.6 menunjukkan satu epoch mengarah pada underfitting pada grafik,
+yaitu ketika model terlalu sederhana dan tidak dapat menangkap kompleksitas data
+pelatihan.
+
+2.16
+
+ONNX
+
+ONNX, singkatan dari Open Neural Network Exchange, adalah sebuah kerangka sumber terbuka standar yang memungkinkan para pengembang untuk memindahkan model pembelajaran mesin dari berbagai kerangka ke ONNX. Interoperabi-
+
+19
+litas ini memungkinkan pengembang untuk dengan mudah berpindah antar berbagai
+kerangka pembelajaran mesin. ONNX mendukung semua kerangka pembelajaran
+mesin populer termasuk Keras, TensorFlow, Scikit-learn, PyTorch dan XGBoost.
+ONNX juga memungkinkan vendor produk hardware yang ditujukan untuk mempercepat pembelajaran mesin untuk berfokus pada satu representasi grafik ONNX
+(Softscients, 2023).
+ONNX mencegah pengembang terjebak pada kerangka pembelajaran mesin tertentu dengan menyediakan alat yang membuat mudah untuk berpindah dari satu
+kerangka ke yang lain. Menurut (Softscients, 2023) ONNX melakukan ini dengan
+cara berikut:
+1. Mendefinisikan grafik komputasi yang dapat diperluas, berbagai kerangka akan memiliki representasi grafik yang berbeda. ONNX menyediakan representasi grafik standar untuk semuanya. Grafik ONNX mewakili grafik model
+melalui berbagai node komputasi dan dapat dilihat menggunakan alat seperti
+Netron.
+2. Membuat tipe data standar, setiap node dalam grafik biasanya memiliki tipe
+data tertentu untuk menyediakan interoperabilitas antar berbagai kerangka,
+ONNX mendefinisikan tipe data standar termasuk int8, int16 dan float16,
+hanya untuk sebagian.
+3. Operator built-in ,operator ini bertanggung jawab untuk memetakan tipe operator dalam ONNX ke kerangka yang diperlukan. Jika Anda mengubah model PyTorch ke ONNX, semua operator PyTorch diterjemahkan ke operator
+yang terkait dalam ONNX. Misalnya, operasi sigmoid PyTorch akan dikonversi menjadi operasi sigmoid yang sesuai dalam ONNX.
+4. Penyediaan format file tunggal, setiap library pembelajaran mesin memiliki
+format file sendiri. Misalnya, model Keras dapat disimpan dengan ekstensi
+h5, PyTorch sebagai pt dan model scikit-learn sebagai file pickle. ONNX
+menyediakan standar tunggal untuk menyimpan dan mengekspor file model.
+Format tersebut adalah ekstensi file ‘onnx’.
+
+2.17 Flowchart
+Flowchart atau sering disebut dengan diagram alur merupakan suatu jenis diagram yang merepresentasikan algoritma atau langkah-langkah instruksi yang berurutan dalam sistem. Flowchart dibuat dengan tujuan untuk menunjukkan setiap
+
+20
+proses yang harus dilalui dalam suatu sistem (Rosaly dan Prasetyo, 2019). Simbolsimbol flowchart dibagi menjadi 3 kategori.
+
+2.17.1
+
+Simbol Arus (Flow Direction Symbols)
+
+Simbol-simbol yang termasuk dalam kategori ini digunakan sebagai simbol
+penghubung. Gambar 2.7 menampilkan beberapa simbol yang termasuk dalam kategori ini.
+
+Gambar 2.7 Simbol Arus
+Sumber: (Kumparan, 2021)
+
+2.17.2
+
+Simbol Proses (Processing Symbols)
+
+Sesuai dengan namanya, simbol proses digunakan untuk menyatakan simbol
+yang berkaitan dengan serangkaian proses yang dilakukan. Gambar 2.8 menampilkan beberapa simbol yang termasuk dalam bagian proses.
+
+21
+
+Gambar 2.8 Simbol Proses
+Sumber: (Kumparan, 2021)
+
+2.17.3
+
+Simbol I/O (Input-Output)
+
+Simbol yang termasuk kedalam bagian input-output berkaitan dengan masukan
+dan keluaran. Gambar 2.9 menampilkan beberapa simbol yang termasuk dalam
+bagian input-output.
+
+22
+
+Gambar 2.9 Simbol I/O
+Sumber: (Kumparan, 2021)
+
+2.18
+
+Struktur Navigasi
+
+Menurut Normah (2016) dalam (Handayani dan Pratama, 2019) Struktur navigasi merupakan struktur atau alur dari suatu program yang merupakan rancangan hubungan (rantai kerja) dari beberapa area yang berbeda dan dapat membantu
+mengorganisasikan seluruh elemen pembuatan Website. Menurut Binanto (2014)
+dalam (Handayani dan Pratama, 2019) ada 4 struktur dasar yang digunakan.
+
+2.18.1
+
+Struktur Navigasi Linier
+
+Menurut Binanto (2014) dalam (Handayani dan Pratama, 2019) struktur navigasi linier hanya mempunyai satu rangkaian cerita yang berurut, yang menampilkan
+satu demi satu tampilan layar secara berurut menurut urutannya. Tampilan yang
+dapat ditampilkan pada struktur jenis ini adalah satu halaman sebelumnya atau satu
+halaman sesudahnya, tidak dapat dua halaman sebelumnya atau dua halaman sesudahnya. Struktur navigasi linier dapat dilihat pada Gambar 2.10.
+
+23
+
+Gambar 2.10 Struktur Navigasi Linier
+Sumber: (Handayani dan Pratama, 2019)
+
+2.18.2
+
+Struktur Navigasi Hirarki
+
+Menurut Binanto (2014) dalam (Handayani dan Pratama, 2019) struktur navigasi hirarki biasa disebut struktur bercabang, merupakan suatu struktur yang mengandalkan percabangan untuk menampilkan data berdasarkan kriteria tertentu. Tampilan pada menu satu akan disebut sebagai Master Page (halaman utama pertama),
+halaman utama ini mempunyai halaman utama ini mempunyai halaman percabangan yang disebut Slave Page (halaman pedukung). Jika salah satu halaman pendukung dipilih atau diaktifkan, maka tampilan tersebut akan bernama Master Page
+(halaman utama kedua) dan seterusnya. Pada navigasi ini tidak diperkenalkan adanya tampilan secara linier. Struktur navigasi hirarki dapat dilihat pada Gambar 2.11.
+
+Gambar 2.11 Struktur Navigasi Hirarki
+Sumber: (Handayani dan Pratama, 2019)
+
+2.18.3
+
+Struktur Navigasi Non-Linier
+
+Menurut Binanto (2014) dalam (Handayani dan Pratama, 2019) struktur navigasi Non – Linier merupakan pengembangan dari struktur navigasi linier. Pada
+struktur ini diperkenalkan membuat navigasi bercabang. Percabangan pada struktur non linier ini berbeda dengan percabangan pada struktur hirarki. Karena pada
+percabangan ini walaupun terdapat percabangan, tetapi tiap – tiap tampilan mempunyai kedudukan yang sama yaitu tidak ada Master Page dan Slave Page. Struktur
+navigasi non-linier dapat dilihat pada Gambar 2.12.
+
+24
+
+Gambar 2.12 Struktur Navigasi Non-Linier
+Sumber: (Handayani dan Pratama, 2019)
+
+2.18.4
+
+Struktur Navigasi Campuran
+
+Menurut Binanto (2014) dalam (Handayani dan Pratama, 2019) struktur navigasi composite (campuran) disebut juga struktur navigasi bebas yang merupakan gabungan dari ketiga struktur yang ada. Struktur navigasi ini biasa digunakan dalam
+pembuatan multimedia karena dapat memberikan kerinteraksian yang lebih tinggi.
+Struktur navigasi campuran dapat dilihat pada Gambar 2.13.
+
+Gambar 2.13 Struktur Navigasi Campuran
+Sumber: (Handayani dan Pratama, 2019)
+
+2.19
+
+Penelitian Terdahulu
+
+Tabel 2.3 menampilkan penelitian terdahulu yang membahas pendeteksian kantuk dengan berbagai macam metode digunakan sebagai referensi dalam penelitian
+ini.
+
+25
+Tabel 2.3 Penelitian Terdahulu
+No
+1
+
+Peneliti dan
+Tahun
+Ganguly et
+al., 2022
+
+Judul Penelitian
+An Attention
+Deep Learning
+Framework
+Based
+Drowsiness
+Detection Model
+for Intelligent
+Transportation
+System
+
+Metode
+Penelitian
+Attention
+YOLOv3
+
+2
+
+Amira et
+al., 2021
+
+Driver
+Drowsiness
+Detection and
+Tracking Based
+on Yolo with
+Haar Cascades
+and ERNN
+
+Haar
+cascades
+dan
+YOLO-Lite
+
+3
+
+Dipu et al.,
+2021
+
+Real-time Driver
+Drowsiness
+Detection using
+Deep Learning
+
+CNN
+
+Hasil Penelitian
+Metode attention
+YOLOV3 yang
+diusulkan
+menunjukkan
+akurasi yang sangat
+baik sebesar 98.2% .
+Hasil ini
+menegaskan bahwa
+metode ini dapat
+diandalkan dalam
+mengidentifikasi
+tanda-tanda kantuk
+pada pengemudi.
+Metode ini
+menunjukkan
+13,53% peningkatan
+dalam mendeteksi
+kantuk pengemudi
+dengan lebih efisien
+dan akurat, serta
+memberikan umpan
+balik melalui
+jaringan saraf
+ERNN.
+Kinerja sistem
+berhasil
+memberikan lebih
+dari 90% akurasi
+dengan hanya
+menggunakan
+sedikit gambar
+dalam pelatihan.
+Namun, perlu
+peningkatan lebih
+lanjut pada dataset.
+untuk mendeteksi
+tanda-tanda kantuk
+dengan lebih akurat
+dan dapat
+diandalkan.
+
+26
+No
+
+Peneliti dan
+Tahun
+
+Judul Penelitian
+
+Metode
+Penelitian
+
+Hasil Penelitian
+
+4
+
+Sinha et al.,
+2021
+
+Drowsiness
+Detection System
+Using Deep
+Learning
+
+Viola
+Jones,
+YOLOv3,
+dan Dlib
+
+Algoritma YOLOv3
+lebih baik dalam
+mendeteksi wajah
+dibandingkan
+dengan algoritma
+Viola Jones dan
+Dlib.
+
+5
+
+Faraji et al.,
+2021
+
+Drowsiness
+Detection Based
+on Driver
+Temporal
+Behavior Using a
+New Developed
+Dataset
+
+LSTM dan
+YOLOv3
+
+CNN YOLOv3
+digunakan untuk
+mendeteksi wajah
+dan LSTM
+diterapkan untuk
+klasifikasi dari objek
+yang terdeteksi.
+Sistem dapat
+melakukan deteksi
+dengan akurasi
+sebesar 91.7%.
+
+6
+
+Maior et
+al., 2020
+
+Real-time
+classification for
+autonomous
+drowsiness
+detection using
+eye aspect ratio
+
+Multilayer
+Perceptron,
+Random
+Forest,
+Support
+Vector
+Machine
+
+Model SVM
+memiliki akurasi
+dan waktu
+pemrosesan terbaik
+dari ketiga model
+tersebut.
+
+BAB 3
+METODOLOGI PENELITIAN
+3.1
+
+Tahapan Penelitian
+
+Metodologi penelitian memiliki tujuan untuk memecah seluruh kegiatan yang
+dilakukan selama kegiatan deteksi objek berlangsung. Proses konvolusi tersebut
+menggunakan algoritma YOLOv5 yang bertujuan untuk mendeteksi dan mengklasifikasikan sebuah objek dengan menampilkan sebuah bounding box. Metodologi
+penelitian yang digunakan adalah Cross-Industry Standard Process for Data Mining
+(CRISP-DM), yang terdiri dari tahapan-tahapan seperti yang terlihat pada Gambar
+3.1.
+
+Gambar 3.1 Tahapan Penelitian
+Tahap pertama berfokus pada pemahaman terhadap masalah bisnis yang ingin
+diselesaikan dengan analisis data. Tahap kedua bertujuan untuk memahami data
+yang tersedia dan relevan untuk masalah tersebut. Tahap ketiga meliputi proses
+pembersihan, integrasi dan transformasi data menjadi bentuk yang sesuai untuk
+modeling. Tahap keempat adalah tahap pemodelan di mana data diolah dengan
+algoritma yang sesuai untuk menghasilkan model yang dapat diprediksi. Tahap
+kelima adalah evaluasi hasil model untuk menentukan apakah model tersebut cukup
+baik dalam memecahkan masalah bisnis. Terakhir, tahap keenam adalah deployment
+atau penerapan model dalam kegiatan bisnis atau proses pengambilan keputusan.
+
+27
+
+28
+
+3.2
+
+Business Understanding
+
+Tahap business understanding, akan mencari arah dan tujuan serta strategi awal
+pada penelitian deteksi kantuk pengemudi kendaraan bermotor, yaitu mencegah terjadinya kecelakaan yang disebabkan oleh pengemudi mengantuk dengan mengenali
+tanda-tanda kantuk berdasarkan wajah pengemudi. Langkah-langkah yang dilakukan untuk memahami bagaimana deteksi kantuk dapat membantu mencapai tujuan
+bisnis tersebut antara lain:
+1. Melakukan pencarian data kecelakaan yang disebabkan oleh pengemudi yang
+mengantuk dari berbagai sumber, seperti laporan kepolisian atau berita.
+2. Mengidentifikasi tanda-tanda kantuk berdasarkan ekspresi wajah pengemudi,
+seperti mata yang terpejam atau mulut yang menguap.
+3. Mempelajari jurnal atau artikel ilmiah yang berkaitan dengan deteksi kantuk,
+baik itu dari segi teknologi atau metode yang digunakan.
+4. Menentukan algoritma yang sesuai untuk melakukan modeling, dengan mempertimbangkan faktor seperti tingkat akurasi dan kecepatan pemrosesan.
+
+3.2.1
+
+Analisis Kebutuhan Fungsional
+
+Pada kebutuhan fungsional berisi hal yang dilakukan pada program sebagai berikut:
+1. Model dapat mendeteksi tanda-tanda kantuk berdasarkan ekspresi wajah pengemudi.
+2. Model dapat memberikan peringatan berupa suara peringatan agar pengemudi
+dapat mengambil tindakan yang diperlukan untuk mencegah kecelakaan.
+
+3.2.2
+
+Analisis Kebutuhan Non Fungsional
+
+Kebutuhan non fungsional yang dibutuhkan dikategorikan menjadi 2 yaitu:
+1. Kebutuhan Perangkat Keras
+Perangkat keras yang dibutuhkan dalam pembuatan aplikasi ini adalah laptop
+dan kamera webcam. Perangkat keras laptop digunakan sebagai media perancangan dan penulisan program aplikasi, sementar kamera webcam digunakan
+
+29
+untuk menampilkan output video. Spesifikasi laptop dalam pembuatan aplikasi ini adalah AMD Ryzen™ 5 3500U 4 Core 8 Thread Clockspeed @ 3.7
+Ghz, RAM 12 GB, system type 64-bit Operating System, OS Windows 11
+Home. Spesifikasi kamera webcam yang digunakan adalah 1080p Full HD
+2. Kebutuhan Perangkat Lunak
+Perangkat lunak ini diperlukan untuk proses pembuatan aplikasi dan mengimplementasikannya. Perangkat lunak yang digunakan meliputi sistem operasi
+laptop, Visual Studio Code, Python 3.7.9 dan labelimg.
+
+3.3
+
+Data Understanding
+
+Dataset yang digunakan adalah data citra wajah pengemudi dalam berbagai kondisi untuk mengenali tanda-tanda kantuk pada pengemudi seperti yang ditampilkan
+pada Gambar 3.2.
+
+Gambar 3.2 Wajah pengemudi yang mengantuk dan terjaga
+Ekspresi wajah pengemudi dikategorikan menjadi 2 yaitu pengemudi yang
+mengantuk dan terjaga. Dataset dibagi menjadi dua kelompok, yaitu dataset training untuk proses modeling dan dataset testing untuk proses evaluation.
+
+3.3.1
+
+Pengumpulan Dataset
+
+Dataset training dan testing diperoleh dengan menggunakan metode yang berbeda, seperti yang terlihat pada Gambar 3.3.
+
+30
+
+Gambar 3.3 Alur Pengumpulan Dataset Training (A) dan Dataset Testing (B)
+Pengumpulan dataset untuk training dilakukan dengan mengunduh dataset
+open source melalui website Roboflow, yang berisi gambar wajah pengemudi dalam kondisi kantuk dan terjaga. Gambar-gambar tersebut diunduh dalam format
+YOLOv5. Proses pengumpulan dataset training dapat dilihat pada Gambar 3.4.
+
+Gambar 3.4 Proses Pengumpulan Dataset Training
+
+31
+Pada dataset testing, data diperoleh dengan mengambil gambar menggunakan
+kamera webcam beresolusi 1080p. Webcam dihubungkan ke laptop, kemudian diletakkan pada dashboard mobil dengan jarak 50 cm dan menghadap lurus ke wajah
+pengemudi seperti pada Gambar 3.5.
+
+Gambar 3.5 Pengumpulan Dataset Testing
+
+3.4
+
+Data Preparation
+
+Dataset yang diperoleh belum menjadi suatu data yang bersih dan perlu dilakukan beberapa tahap untuk membuat dataset tersebut siap digunakan. Tahap tersebut
+dapat dilihat pada Gambar 3.6.
+
+Gambar 3.6 Tahap Data Preparation
+
+3.4.1
+
+Data Cleaning
+
+Sebelum melakukan pelabelan pada dataset training, dilakukan seleksi secara manual terlebih dahulu untuk memastikan gambar memiliki kualitas yang baik.
+Gambar 3.7 menampilkan alur dari data cleaning.
+
+32
+
+Gambar 3.7 Alur Data Cleaning
+Data cleaning dilakukan pada seluruh dataset training dengan mengeliminasi
+gambar-gambar yang buram, gelap, atau tidak jelas. Gambar 3.8 menampilkan contoh gambar dengan kualitas baik dan gambar dengan kualitas buruk.
+
+Gambar 3.8 Gambar Dengan Kualitas Baik Dan Gambar Dengan Kualitas Buruk
+Data cleaning tidak dilakukan pada dataset testing agar dapat menguji performa
+deteksi pada berbagai kondisi gambar.
+
+3.4.2
+
+Data Resizing
+
+Proses data resizing dilakukan untuk memastikan bahwa semua gambar pada
+dataset memiliki ukuran yang seragam, sehingga dapat diproses dengan mudah dan
+akurat oleh model yang akan dilatih. Gambar 3.9 menampilkan alur dari data resizing.
+
+33
+
+Gambar 3.9 Alur Data Resizing
+Data resizing dilakukan pada dengan mengubah ukuran dimensi gambar menjadi ukuran 640 x 480 piksel.
+
+3.4.3
+
+Pelabelan Dataset
+
+Dataset training yang telah diseleksi kemudian akan diberi label berdasarkan
+kelas yang telah ditentukan pada Tabel 3.1.
+Tabel 3.1 Kelas
+No
+1
+2
+3
+4
+
+Indikator
+Mata terpejam, mulut menguap
+Mata terpejam, mulut tertutup
+Mata terbuka, mulut menguap
+Mata terbuka, mulut tertutup
+
+Kelas
+kantuk
+kantuk
+kantuk
+terjaga
+
+Kelas yang akan digunakan terdiri dari 2 kategori, yaitu kantuk dan terjaga. Indikator yang digunakan untuk menentukan kategori tersebut adalah ekspresi mata
+dan mulut pengemudi. Pelabelan dataset dilakukan menggunakan software labelimg. Gambar 3.10 menampilkan alur dari pelabelan dataset.
+
+34
+
+Gambar 3.10 Alur Pelabelan Dataset
+Proses pelabelan dataset dilakukan dengan pembuatan bounding box, yaitu sebuah kotak yang diletakkan di sekitar objek yang ingin dideteksi dalam sebuah gambar. Kotak ini dapat disesuaikan ukurannya dan posisinya untuk mengikuti kontur
+objek dengan tepat dan memungkinkan untuk dengan mudah menandai dan mengekstrak objek dari gambar.
+Bounding box dibuat dengan cara menekan tombol Create RectBox atau klik
+tombol kanan pada mouse dan pilih Create RectBox. Ukuran bounding box disesuaikan dengan ukuran wajah pengemudi, kemudian kelas diatributkan ke dalam
+bounding box sesuai dengan indikator pada gambar, seperti yang terlihat pada Gambar 3.11.
+
+Gambar 3.11 Pemberian Kelas Pada Bounding Box
+
+35
+
+3.5
+
+Modeling
+
+Tahap ini akan melatih dataset training yang telah di-split untuk menghasilkan
+model YOLOv5 yang dapat mendeteksi kantuk pada pengemudi. Proses modeling
+ditampilkan pada Gambar 3.12.
+
+Gambar 3.12 Alur Modeling
+Tahap modeling dimulai dengan melakukan split dataset pada dataset training
+dengan perbandingan 90:10. Setelah itu, dilakukan konfigurasi parameter YOLOv5
+, termasuk image size, batch, epoch dan weights. Tahap berikutnya dilakukan pelatihan dataset untuk menghasilkan model, performa model selama pelatihan kemudian ditampilkan menggunakan nilai mAP 0,5. Model kemudian di-convert menjadi
+format ONNX untuk dapat mendeteksi secara realtime. Setelah proses modeling
+dilakukan, model tersebut digunakan untuk tahap evaluation menggunakan dataset
+testing.
+
+3.5.1
+
+Split Dataset
+
+Split dataset dilakukan pada dataset training dengan menggunakan perbandingan 90:10. Aturan ini menyatakan bahwa 10% dari aktivitas yang dilakukan akan
+memberikan dampak pada 90% hasil yang dicapai (Hunter, 2017). Split dataset
+
+36
+juga dilakukan dengan perbandingan 80:20 untuk membandingkan performa model
+yang dihasilkan. Split dataset dilakukan sesuai dengan yang terlihat pada Gambar
+3.13.
+
+Gambar 3.13 Split Dataset
+Dataset training dibagi menjadi dua bagian, Train untuk proses pelatihan dan
+Val untuk mengevaluasi performa model selama proses pelatihan.
+
+3.5.2
+
+Konfigurasi Parameter
+
+Konfigurasi parameter model dilakukan pada parameter asli YOLOv5 untuk
+mendapatkan model yang sesuai dengan penelitian yang dilakukan. Tabel 3.2 menunjukkan konfigurasi parameter yang akan digunakan dalam tiga skenario pelatihan dataset yang berbeda.
+Tabel 3.2 Konfigurasi Parameter Model
+No
+
+Parameter
+
+Skenario 1
+
+Skenario 2
+
+Skenario 3
+
+1
+2
+3
+4
+
+Input Size
+Batch Size
+Epoch
+Weights
+
+640
+16
+100
+yolov5s.pt
+
+640
+16
+50
+yolov5s.pt
+
+640
+16
+20
+yolov5s.pt
+
+Keterangan:
+1. Input size
+Ukuran gambar input yang akan diproses oleh YOLO, yaitu 640 piksel.
+2. Batch size
+Jumlah gambar yang diproses dalam satu iterasi saat pelatihan, yaitu 16 gambar.
+
+37
+3. Epoch
+Menunjukkan berapa kali seluruh dataset akan diproses oleh YOLO saat pelatihan, pada skenario 1 akan dilakukan 100 kali, pada skenario 2 dilakukan
+50 kali dan pada skenario 3 dilakukan 20 kali.
+4. Weights
+Model pre-trained YOLOv5 yang akan digunakan dalam proses pelatihan,
+yaitu YOLOv5 Small.
+
+3.5.3
+
+Pelatihan Dataset
+
+Pelatihan dataset dilakukan menggunakan kode program berikut, yang disesuaikan dengan konfigurasi parameter pada setiap skenario.
+
+python train . py -- img 640 -- batch 16 -- epochs 100 -data custom_dataset . yaml -- weights yolov5s . pt -cache
+
+Kode program ini akan melakukan proses pelatihan dataset untuk menghasilkan
+model menggunakan file train.py. Argumen '--img' digunakan untuk mengatur
+ukuran gambar input, ’--batch' untuk mengatur batch size yang digunakan dan
+'--epochs' untuk mengatur jumlah epoch yang akan dilakukan pada dataset. Argumen '--data' digunakan untuk menentukan file konfigurasi dataset yang akan
+digunakan selama pelatihan, sedangkan '--weights' digunakan untuk menentukan file model pre-trained yang akan digunakan sebagai awal pelatihan. Argumen
+'--cache' digunakan untuk menyimpan data cache agar pelatihan pada iterasi selanjutnya dapat lebih cepat.
+
+3.5.4
+
+Konversi Model
+
+Konversi model YOLOv5 ke format ONNX memungkinkan model untuk dijalankan secara efisien pada berbagai perangkat keras dan sistem, sehingga memungkinkan deteksi yang lebih cepat dan responsif. Berikut kode program yang
+digunakan untuk melakukan konversi model YOLOv5 ke ONNX.
+
+38
+
+python export . py -- weights runs \ train \ exp \ weights \ best . pt -include torchscript onnx
+
+Skrip export.py akan melakukan ekspor model dalam format ONNX yang telah dilatih dengan menggunakan framework PyTorch. Dengan menggunakan skrip
+ini, pengguna dapat menghasilkan model yang dapat dijalankan pada aplikasi dekstop dengan menggunakan format serialisasi ONNX. Format serialisasi ONNX memungkinkan pengguna untuk membawa model PyTorch ke dalam aplikasi desktop
+yang menggunakan framework atau bahasa pemrograman yang mendukung format
+ONNX.
+
+3.6
+
+Evaluation
+
+Tahap evaluation dilakukan pada model YOLOv5 untuk mengevaluasi performa model pada data yang belum pernah dilihat sebelumnya, dengan menggunakan
+dataset testing. Metrik evaluation yang digunakan adalah confusion matrix, yang
+akan digunakan untuk menghitung jumlah prediksi benar dan salah dari model.
+
+3.6.1 Confusion Matrix
+Pada Gambar 3.14, koordinat (1,1) menunjukkan jumlah data True Positive
+(TP), koordinat (1,0) menunjukkan jumlah data False Negative (FN), koordinat
+(0,1) menunjukkan jumlah data False Positive (FP) dan koordinat (0,0) menunjukkan jumlah data True Negative (TN). Hasil dari confusion matrix kemudian digunakan untuk mengukur accuracy, precision dan recall dari model deteksi.
+
+Gambar 3.14 Confusion Matrix
+
+39
+Keterangan:
+• True Positive (TP) = Jumlah data yang dideteksi positif (kantuk) dan sebenarnya memang positif (kantuk).
+• False Positive (FP) = Jumlah data yang tidak terdeteksi negatif (terjaga), tetapi
+sebenarnya negatif (terjaga).
+• False Negative (FN) = Jumlah data yang tidak terdeteksi positif (kantuk) dan
+sebenarnya memang positif (kantuk).
+• True Negative (TN) = Jumlah data yang tidak terdeteksi negatif (terjaga) dan
+memang negatif (terjaga).
+
+3.6.2
+
+Perhitungan Accuracy
+
+Accuracy mengukur seberapa baik model dalam memprediksi secara benar label
+kelas positif (kantuk) atau negatif (terjaga) dari seluruh data dalam dataset. Semakin tinggi nilai accuracy, semakin sedikit jumlah data yang diprediksi dengan salah
+oleh model. Berikut adalah Persamaan 3.1 yang digunakan untuk melakukan perhitungan accuracy:
+accuracy =
+
+3.6.3
+
+(T P + T N)
+× 100%
+(T P + T N + FP + FN)
+
+(3.1)
+
+Perhitungan Precision
+
+Precision mengukur seberapa banyak data yang diprediksi positif (kantuk) oleh
+model yang benar-benar positif (kantuk). Semakin tinggi nilai precision, semakin
+sedikit jumlah data negatif (terjaga) yang salah diprediksi sebagai positif (kantuk).
+Berikut adalah Persamaan 3.2 yang digunakan untuk melakukan perhitungan precision:
+precision =
+
+3.6.4
+
+TP
+× 100%
+(T P + FP)
+
+(3.2)
+
+Perhitungan Recall
+
+Recall mengukur kemampuan model untuk mendeteksi semua kasus positif
+(kantuk) yang sebenarnya dalam dataset. Semakin tinggi nilai recall, semakin sedikit jumlah data positif (kantuk) yang salah diprediksi sebagai negatif (terjaga). Sebaliknya, semakin rendah nilai recall, semakin banyak kasus positif (kantuk) yang
+
+40
+sebenarnya tidak terdeteksi oleh model. Berikut adalah Persamaan 3.3 yang digunakan untuk melakukan perhitungan recall:
+recall =
+
+3.7
+
+TP
+× 100%
+(T P + FN)
+
+(3.3)
+
+Deployment
+
+Tahap deployment akan mengimplementasikan hasil yang didapat ke dalam sebuah aplikasi desktop yang dapat melakukan deteksi kantuk pada pengemudi kendaraan bermotor secara realtime. Aplikasi kemudian diuji untuk mengetahui performa
+model dalam deteksi kantuk secara realtime.
+
+3.7.1
+
+Perancangan Aplikasi
+
+Perancangan aplikasi bertujuan untuk merencanakan tampilan dan alur dari aplikasi deteksi kantuk pada pengemudi kendaraan bermotor secara realtime. Perancangan aplikasi ini berbasis dekstop dengan menggunakan struktur navigasi pada
+tampilan aplikasi.
+3.7.1.1
+
+Struktur Navigasi
+
+Perancangan struktur navigasi berfungsi untuk menggambarkan dengan jelas
+hubungan dan rantai kerja seluruh elemen yang nanti akan digunakan dalam aplikasi
+tersebut. Struktur navigasi yang digunakan dalam rancangan ini adalah struktur
+navigasi campuran, seperti yang terlihat pada Gambar 3.15.
+
+Gambar 3.15 Rancangan Strukur Navigasi
+Gambar 3.15 menunjukkan struktur navigasi dari aplikasi ini. Pada menu utama,
+terdapat menu Data Preparation yang terdiri dari tab dataset, tab labeling dan tab
+hasil, menu Modeling yang terdiri dari tab modeling dan convert, menu Evaluation
+yang terdiri dari tab evaluation, menu Detect yang terdiri dari tab input gambar
+
+41
+dan menu Detect Realtime yang terdiri dari tiga frame, yaitu frame Real Time Feed,
+Detection Info dan Detected Faces, yang masing-masing frame akan muncul secara
+berurutan selama proses deteksi kantuk berlangsung.
+
+3.7.2
+
+Perancangan Tampilan
+
+Desain antarmuka tentu diperlukan dalam pembuatan aplikasi, perancangan desain antarmuka merupakan proses penggambaran bagaimana sebuah bagian desain
+antarmuka dibentuk. Berikut ini rancangan tampilan antarmuka dari aplikasi deteksi kantuk.
+3.7.2.1
+
+Perancangan Tampilan Menu Utama
+
+Menu Utama merupakan tampilan awal yang muncul setelah aplikasi dibuka.
+Gambar 3.16 menunjukan tampilan rancangan menu utama.
+
+Gambar 3.16 Rancangan Tampilan Menu Utama
+Pada rancangan tampilan menu utama ini terdapat judul aplikasi pada bagian
+atas, yang didalamnya terdiri dari teks. Tampilan Gambar terletak dibawah judul
+aplikasi, kemudian terdapat teks dibawah yang berisi penjelasan singkat mengenai
+kantuk. Tombol menu data preparation, modeling, evaluation, detect dan detect
+realtime berada di area bawah aplikasi.
+3.7.2.2
+
+Perancangan Tampilan Menu Data Preparation
+
+Menu data preparation ditampilkan setelah menekan tombol data preparation
+pada menu utama. Pada menu ini terdapat tiga tab pilihan, dengan tab dataset sebagai tab yang akan ditampilkan pertama kali. Gambar 3.17 menunjukan tampilan
+rancangan menu data preparation.
+
+42
+
+Gambar 3.17 Rancangan Tampilan Menu Data Preparation
+Tab dataset ini terdiri dari beberapa tombol, resize dataset untuk input dataset
+yang akan di-resize, hapus dataset untuk menghapus dataset dan tampilkan hasil
+untuk menampilkan hasil gambar yang sudah di-resize. Terdapat juga tombol prev
+dan next digunakan untuk menampilkan gambar selanjutnya atau sebelumnya, serta
+tombol close untuk kembali ke menu utama.
+
+Gambar 3.18 Rancangan Tampilan Tab Labeling
+Gambar 3.18 menampilkan rancangan tampilan tab labeling yang terdiri dari
+tombol labeling untuk membuka LabelImg dan melakukan pelabelan dataset, serta
+tombol close untuk kembali ke menu utama.
+
+43
+
+Gambar 3.19 Rancangan Tampilan Tab Hasil
+Gambar 3.19 menampilkan rancangan tampilan tab hasil yang terdiri dari tombol tampilkan hasil untuk menampilkan file anotasi YOLO hasil pelabelan, serta
+tombol close untuk kembali ke menu utama.
+3.7.2.3
+
+Perancangan Tampilan Menu Modeling
+
+Menu Modeling ditampilkan setelah menekan tombol modeling pada menu utama. Pada menu ini terdapat dua tab pilihan, dengan tab pelatihan sebagai tab yang
+akan ditampilkan pertama kali. Gambar 3.20 menunjukan tampilan rancangan menu modeling.
+
+Gambar 3.20 Rancangan Tampilan Menu Modeling
+
+44
+Tab pelatihan ini terdiri dari beberapa tombol. Tombol split dataset dataset digunakan untuk membagi dataset training dengan perbandingan 90:10.Tombol latih
+model untuk melatih model setelah memasukkan nilai batch size dan epoch pada
+kolom diatas tombol tersebut dan tombol show untuk menampilkan nilai mAP 0.5
+dan nilai avg mAp 0.5 pada tabel. Terdapat juga tombol close untuk kembali ke
+menu utama.
+
+Gambar 3.21 Rancangan Tampilan Tab Convert
+Gambar 3.21 menampilkan rancangan tampilan tab convert yang terdiri dari
+beberapa tombol, convert model untuk mengkonversi model yang sudah dilatih ke
+format ONNX dan tombol close untuk kembali ke menu utama.
+3.7.2.4
+
+Perancangan Tampilan Menu Evaluation
+
+Menu evaluation ditampilkan setelah menekan tombol evaluation pada menu
+utama. Pada menu ini hanya terdapat satu tab pilihan, yaitu tab evaluation. Gambar
+3.22 menunjukan tampilan rancangan menu evaluation.
+
+45
+
+Gambar 3.22 Rancangan Tampilan Menu Evaluation
+Menu evaluation ini terdiri dari beberapa tombol. Tombol input dataset untuk
+input dataset testing yang akan digunakan, tombol evaluasi model untuk melakukan
+proses evaluasi ,dan tombol tampilkan hasil untuk menampilkan nilai accuracy,
+precision dan recall serta hasil proses evaluasi dalam bentuk gambar. Terdapat
+juga tombol prev dan next digunakan untuk menampilkan gambar selanjutnya atau
+sebelumnya, serta tombol close untuk kembali ke menu utama.
+3.7.2.5
+
+Perancangan Tampilan Menu Detect
+
+Menu detect ditampilkan setelah menekan tombol detect pada menu utama. Pada menu ini hanya terdapat satu tab pilihan, yaitu tab input gambar. Gambar 3.23
+menunjukan tampilan rancangan menu detect.
+
+46
+
+Gambar 3.23 Rancangan Tampilan Menu Detect
+Menu detect ini terdiri dari beberapa tombol. Tombol input gambar untuk input
+gambar yang akan dideteksi, tombol detect untuk mendeteksi gambar yang sudah
+di-input,dan tombol tampilkan hasil untuk menampilkan nilai hasil deteksi. Terdapat juga tombol prev dan next digunakan untuk menampilkan gambar selanjutnya
+atau sebelumnya, serta tombol close untuk kembali ke menu utama.
+3.7.2.6
+
+Perancangan Tampilan Detect Realtime
+
+Menu detect realtime ditampilkan setelah menekan tombol detect realtime pada
+menu utama. Pada menu ini akan ditampilkan sebuah frame yang terdiri dari 3
+frame, yaitu frame Realtime Feed, Detection Info dan Detected Faces.
+
+Gambar 3.24 Rancangan Tampilan Frame Realtime Feed
+Frame ini menampilkan gambar yang diambil secara langsung dari kamera webcam dan memperbarui gambar secara realtime. Gambar 3.24 menunjukan tampilan rancangan frame Realtime Feed.
+
+47
+
+Gambar 3.25 Rancangan Tampilan Frame Detection Info
+Frame ini menampilkan informasi tentang hasil deteksi wajah seperti kelas yang
+terdeteksi, confidence score dan bounding box (kotak persegi panjang yang mengelilingi wajah yang terdeteksi). Gambar 3.25 menunjukan tampilan rancangan frame
+Detection Info.
+
+Gambar 3.26 Rancangan Tampilan Frame Detected Faces
+Frame ini menampilkan gambar wajah yang terdeteksi mengantuk yang sudah
+di-crop (potong) dari gambar asli pada frame pertama. Gambar 3.26 menunjukan
+tampilan rancangan frame Detected Faces.
+
+3.7.3
+
+Pengujian Aplikasi
+
+Aplikasi akan diuji dalam dua tahap untuk mendeteksi kantuk pada pengemudi secara realtime, yaitu pengujian pada siang hari dan malam hari menggunakan
+dua kamera webcam dengan resolusi yang berbeda, yaitu 720p dan 1080p untuk
+memastikan kemampuan deteksi kantuk pengemudi yang sesuai dengan indikator
+pada wajah pengemudi.
+
+BAB 4
+HASIL DAN PEMBAHASAN
+4.1
+
+Hasil Business Understanding
+
+Kecelakaan lalu lintas yang disebabkan oleh pengemudi yang mengantuk dapat
+berakibat fatal dan menyebabkan kehilangan nyawa dan harta benda.
+Menurut data dari National Highway Traffic Safety Administration (NHTSA),
+setiap tahunnya terdapat lebih dari 100.000 kecelakaan lalu lintas yang disebabkan
+oleh pengemudi yang mengantuk di Amerika Serikat saja.
+Pengembangan sistem deteksi kantuk pada pengemudi kendaraan bermotor dapat membantu mencegah terjadinya kecelakaan lalu lintas akibat pengemudi mengantuk.
+Menggunakan algoritma YOLOv5, model dapat mengidentifikasi tanda-tanda
+kantuk pada pengemudi, seperti mata yang terpejam atau mulut yang menguap.
+Model juga dapat memberikan peringatan kepada pengemudi untuk beristirahat atau
+mengambil tindakan lain yang diperlukan untuk mencegah kecelakaan, dengan melakukan deployment model ke dalam aplikasi desktop.
+
+4.2
+
+Hasil Data Understanding
+
+Dataset dibagi menjadi dua kelompok, dataset training untuk modeling dan dataset testing untuk evaluation. Dataset training menggunakan dataset open source
+dari website Roboflow, sedangkan dataset testing diambil menggunakan kamera
+webcam 1080p. Tabel 4.1 menunjukkan hasil pengumpulan dataset training dan
+testing.
+Tabel 4.1 Hasil Pengumpulan Dataset
+No
+1
+2
+
+Jenis Dataset
+Dataset Training
+Dataset Testing
+
+Jumlah
+261
+325
+
+Ukuran
+640 x 480 Piksel
+5760 x 4312 Piksel
+
+Format
+JPG
+JPG
+
+Jumlah dataset training sebanyak 261 gambar dipilih untuk menghindari waktu
+preprocessing yang lama dan sudah cukup untuk melakukan deteksi kantuk dengan
+
+48
+
+49
+algoritma YOLOv5. Dataset testing yang digunakan sebanyak 325 gambar karena
+jumlah data yang lebih banyak pada tahap testing dapat memberikan informasi yang
+lebih akurat tentang seberapa baik model dapat melakukan deteksi kantuk pada pengemudi dan dapat membantu menguji kehandalan model pada berbagai situasi
+pengambilan gambar yang berbeda. Dataset training dan dataset testing ditampilkan pada Gambar 4.1 dan 4.2.
+
+Gambar 4.1 Dataset Training
+
+Gambar 4.2 Dataset Testing
+
+50
+
+4.3
+
+Hasil Data Preparation
+
+Data Preparation merupakan tahap yang penting untuk membersihkan data
+yang tidak diperlukan dan akan sangat membantu dalam proses modeling yang akan
+dilakukan. Tahap data preparation meliputi proses data cleaning, data resizing dan
+pelabelan dataset.
+
+4.3.1
+
+Hasil Data Cleaning
+
+Gambar 4.3 menunjukkan bahwa terdapat gambar-gambar pada dataset training
+yang memiliki kualitas buruk, terutama pada wajah pengemudi. Hal ini dapat berpengaruh terhadap kemampuan model untuk mendeteksi kantuk pada pengemudi
+dengan akurat.
+
+Gambar 4.3 Gambar Dengan Kualitas Buruk
+Proses data cleaning akan mengeliminasi gambar-gambar pada dataset training
+yang memiliki kualitas buruk seperti buram atau gelap. Hasil dari data cleaning
+yang dilakukan pada dataset training dapat dilihat pada Tabel 4.2 dibawah ini.
+Tabel 4.2 Hasil Data Cleaning
+Dataset Training
+Sebelum Data Cleaning
+Setelah Data Cleaning
+
+Jumlah Data
+261
+247
+
+Tabel 4.2 menampilkan jumlah total dataset training sebelum dan sesudah dilakukan proses data cleaning. Dataset yang awalnya berjumlah 261 gambar berhasil
+direduksi menjadi 247 gambar yang memiliki kualitas baik dan siap untuk dilakukan proses pelabelan.
+
+51
+
+4.3.2
+
+Hasil Data Resizing
+
+Data resizing dilakukan pada dataset testing yang terdiri dari 325 gambar.
+Gambar-gambar tersebut akan diubah menjadi ukuran yang sama dengan gambar
+pada dataset training, yaitu 640 x 480 piksel. Hal ini bertujuan untuk memastikan konsistensi ukuran gambar pada kedua dataset. Proses data resizing dilakukan
+menggunakan kode program berikut.
+
+from PIL import Image
+import os
+def resize_images ( input_dir , output_dir , target_size =(640 ,
+480) ) :
+os . makedirs ( output_dir , exist_ok = True )
+for filename in os . listdir ( input_dir ) :
+try :
+img = Image . open ( os . path . join (
+input_dir , filename ) )
+img_resized = img . resize ( target_size
+, Image . ANTIALIAS )
+output_path = os . path . join (
+output_dir , filename )
+img_resized . save ( output_path )
+print ( f " Image { filename } resized and
+saved to { output_path }")
+except Exception as e :
+print ( f " Error processing { filename }:
+{ e }")
+if__name__ == " __main__ ":
+input_folder = input (" Enter the path to the folder
+containing the images : ")
+output_folder = input (" Enter the path to the output
+folder : ")
+resize_images ( input_folder , output_folder )
+
+Hasil dari kode program diatas akan menampilkan hasil dari data resizing yang
+telah dilakukan yang dapat dilihat pada Gambar 4.4 dibawah.
+
+52
+
+Gambar 4.4 Hasil Data Resizing
+Gambar 4.4 menampilkan perbandingan ukuran gambar sebelum dan setelah
+dilakukan proses data resizing. Ukuran gambar awal sebesar 5760 x 4312 piksel
+diubah menjadi ukuran yang sama dengan dataset training, yaitu 640 x 480 piksel
+untuk digunakan pada tahap evaluation.
+
+4.3.3
+
+Hasil Pelabelan Dataset
+
+Pelabelan dataset dilakukan pada dataset training setelah melalui proses data
+cleaning, dengan jumlah total 247 gambar menggunakan software labelimg. Gambar yang telah diberi label akan terlihat seperti yang ditunjukkan pada Gambar 4.5.
+
+Gambar 4.5 Gambar Yang Sudah Diberi Label
+Pada Gambar 4.5 wajah pengemudi ditandai menggunakan bounding box untuk
+
+53
+memudahkan model untuk memahami letak dan ukuran objek yang dikenali. Bounding box tersebut kemudian diberikan kelas sesuai dengan kondisi wajah pengemudi
+pada gambar.
+Gambar kemudian disimpan dalam format YOLO dan akan menghasilkan file
+anotasi YOLO dengan ekstensi .txt. Jumlah file anotasi YOLO yang dihasilkan
+sesuai dengan jumlah dataset training yang dilakukan pelabelan, yaitu sebanyak
+247.
+
+Gambar 4.6 Isi File Anotasi YOLO
+Gambar 4.6 menampilkan contoh isi dari file anotasi YOLO yang berisikan informasi mengenai id indeks kelas, koordinat objek, tinggi dan lebar bounding box
+pada gambar.
+
+4.4
+
+Hasil Modeling
+
+Pada tahap ini akan membangun model dengan menggunakan algoritma YOLOv5. Dataset yang akan digunakan pada pembuatan model ini menggunakan dataset training.
+
+4.4.1
+
+Hasil Split Dataset
+
+Sebelum melakukan pelatihan pada dataset, dilakukan proses split dataset dengan membagi 247 dataset training menjadi dua bagian. Train digunakan untuk
+pelatihan dan Val digunakan untuk mengevaluasi performa model selama proses
+pelatihan. Hasil split dataset kemudian ditampilkan pada Tabel 4.3 dan Tabel 4.4.
+
+54
+Tabel 4.3 Hasil Split Dataset 90:10
+No
+1
+2
+
+Dataset
+Train
+Val
+
+Jumlah Data
+228
+19
+
+Tabel 4.3 menunjukkan dataset training yang telah dibagi dengan perbandingan
+90:10. Dataset untuk pelatihan (train) berisi gambar dan file anotasi YOLO dari
+228 file, sementara dataset untuk evaluasi performa model selama proses pelatihan
+(val) berisi gambar dan file anotasi YOLO dari 19 file.
+Tabel 4.4 Hasil Split Dataset 80:20
+No
+1
+2
+
+Dataset
+Train
+Val
+
+Jumlah Data
+198
+49
+
+Tabel 4.4 menunjukkan dataset training yang telah dibagi dengan perbandingan
+80:20. Dataset untuk pelatihan (train) berisi gambar dan file anotasi YOLO dari
+198 file, sementara dataset untuk evaluasi performa model selama proses pelatihan
+(val) berisi gambar dan file anotasi YOLO dari 49 file.
+
+Gambar 4.7 Direktori Folder Dataset Training Yang Sudah Di-split
+Gambar 4.7 menunjukkan direktori folder dari dataset yang telah dibagi. Folder images berisi gambar, sedangkan folder labels berisi file anotasi YOLO. Setelah
+split dataset dilakukan kemudian dataset akan dilatih menggunakan 3 skenario konfigurasi parameter yang berbeda.
+
+4.4.2
+
+Hasil Pelatihan Dataset
+
+Dataset yang telah dilatih dengan tiga skenario konfigurasi parameter yang berbeda akan menghasilkan tiga model YOLOv5 yang berbeda. Ketiga model ini
+kemudian akan dibandingkan untuk menentukan model yang memiliki performa
+
+55
+terbaik saat pelatihan berdasarkan data pada file result.csv yang dihasilkan dari proses pelatihan yang tersimpan di direktori masing-masing model, yaitu yolov5/runs/train/exp/. Gambar 4.8 menampilkan isi dari file result.csv.
+
+Gambar 4.8 Isi File result.csv
+File result.csv akan menampilkan performa model pada saat pelatihan sebanyak
+dengan epoch yang ditentukan pada konfigurasi parameter. Metrik yang digunakan
+untuk mengukur performa model tersebut adalah Mean Average Precision (mAP).
+Mean Average Precision (mAP) digunakan untuk mengukur performa model
+deteksi objek, mAP dapat digunakan untuk membandingkan model yang berbeda
+pada tugas yang sama dan versi yang berbeda dari model yang sama. mAP diukur
+pada skala 0 hingga 1. Saat menghitung mAP, ambang batas IOU perlu dipilih. Ambang batas IOU dapat berupa nilai tunggal, seperti 0,5 (mAP@0.5), atau rentang,
+misalnya dari 0,5 hingga 0,95 dengan peningkatan 0,05 (mAP@0.5:0.95). (Solawetz, 2020). Semakin tinggi nilai mAP, semakin akurat model dalam mendeteksi
+objek dengan tingkat keakuratan yang tinggi.
+Nilai mAP 0.5 kemudian akan diambil dari file results.csv menggunakan kode
+program berikut.
+
+mAP = df . iloc [: ,6]
+print ( mAP )
+
+Kode tersebut berfungsi untuk mengambil nilai dari kolom keenam dari file results.csv menggunakan metode '.iloc[:,6]' yang digunakan untuk mengakses
+baris dan kolom mAP 0.5 berdasarkan posisi indeks dan menyimpannya dalam variabel 'mAP'. Kemudian, kode tersebut menampilkan nilai yang ada dalam variabel
+'mAP'. Nilai mAP 0.5 masing-masing model ditampilkan pada Tabel 4.5, Tabel 4.6,
+dan Tabel 4.7.
+
+56
+Tabel 4.5 Nilai mAP 0.5 Hasil Pelatihan Menggunakan Skenario 1
+Epoch
+0
+1
+2
+3
+4
+...
+95
+96
+97
+98
+99
+
+Nilai mAP 0.5 Split Dataset
+90:10
+0.081066
+0.20927
+0.40914
+0.39845
+0.22742
+...
+0.995
+0.995
+0.995
+0.995
+0.995
+
+Nilai mAP 0.5 Split Dataset
+80:20
+0.065746
+0.038282
+0.505870
+0.533450
+0.576160
+...
+0.995
+0.995
+0.995
+0.995
+0.995
+
+Tabel 4.6 Nilai mAP 0.5 Hasil Pelatihan Menggunakan Skenario 2
+Epoch
+0
+1
+2
+3
+4
+...
+45
+46
+47
+48
+49
+
+Nilai mAP 0.5 Split Dataset
+90:10
+0.081066
+0.19397
+0.61794
+0.43481
+0.76086
+...
+0.995
+0.995
+0.995
+0.995
+0.995
+
+Nilai mAP 0.5 Split Dataset
+80:20
+0.065764
+0.040216
+0.533150
+0.383320
+0.350440
+...
+0.995
+0.995
+0.995
+0.995
+0.995
+
+57
+Tabel 4.7 Nilai mAP 0.5 Hasil Pelatihan Menggunakan Skenario 3
+Epoch
+0
+1
+2
+3
+4
+...
+15
+16
+17
+18
+19
+
+Nilai mAP 0.5 Split Dataset
+90:10
+0.081066
+0.18572
+0.55061
+0.60765
+0.59369
+...
+0.995
+0.995
+0.995
+0.995
+0.995
+
+Nilai mAP 0.5 Split Dataset
+80:20
+0.065746
+0.078461
+0.477610
+0.451910
+0.345650
+...
+0.994390
+0.994390
+0.995
+0.995
+0.995
+
+Nilai mAP 0.5 dari masing- masing model memiliki jumlah yang berbeda. Nilai mAP 0.5 ditampilkan berdasarkan jumlah epoch yang digunakan sesuai dengan
+konfigurasi parameter dari masing-masing skenario. Nilai mAP 0.5 dari masingmasing model kemudian dihitung menggunakan kode program berikut.
+
+df . iloc [: ,6]. mean ()
+
+Kode program ini akan menghitung nilai rata-rata (avg) mAp 0.5 sebanyak epoch yang dilakukan. Hasil perhitungan nilai avg mAP 0.5 dari tiap model kemudian
+ditampilkan pada Tabel 4.8 untuk dilakukan perbandingan.
+Tabel 4.8 Performa Model Pada 3 Skenario Berbeda
+No
+1
+2
+
+Split Dataset
+90:10
+80:20
+
+Skenario 1
+0.915
+0.918
+
+Skenario 2
+0.881
+0.834
+
+Skenario 3
+0.714
+0.649
+
+Berdasarkan pelatihan dataset pada tiga skenario yang berbeda, skenario 1 memiliki nilai avg mAP 0.5 tertinggi dengan nilai mAP 0.5 sebesar 0.915 pada split
+dataset 90:10 dan nilai mAP 0.5 sebesar 0.918 pada split dataset 80:20. Hal ini menunjukkan bahwa konfigurasi parameter pada skenario 1 dapat menghasilkan hasil
+evaluation dengan akurasi yang lebih baik dibandingkan dengan konfigurasi parameter pada skenario lainnya pada penelitian ini.
+Model yang dihasilkan dari pelatihan dataset dengan konfigurasi parameter pada skenario 1 kemudian diuji menggunakan dataset testing pada tahap evaluation.
+
+58
+
+4.5
+
+Hasil Evaluation
+
+Evaluation dilakukan menggunakan dataset testing sebanyak 325 gambar, model akan diuji untuk mendeteksi data yang belum pernah dilihat sebelumnya menggunakan kode program berikut.
+
+python detect . py -- source data / images / -- weights runs / train /
+exp / weights / best . pt
+
+Kode program tersebut akan melakukan deteksi kantuk menggunakan skrip detect.py dengan argumen '--source' untuk menunjukkan sumber dataset testing
+yang terdapat pada direktori data/images/. Argumen '--weights' menunjukkan lokasi model yang telah dilatih sebelumnya dengan performa pelatihan terbaik,
+yang disimpan pada direktori runs/train/exp/weights. Hasil deteksi tersebut kemudian akan ditampilkan dalam bentuk visualisasi confusion matrix.
+
+4.5.1
+
+Hasil Evaluation Model Dengan Split Dataset 90:10
+
+Berdasarkan Gambar 4.9, diketahui bahwa jumlah data True Positive (TP) adalah 129 dan jumlah data False Positive (FP) adalah 23. Selain itu, terdapat 27 data
+False Negative (FN) dan 146 data True Negative (TN).
+
+Gambar 4.9 Perhitungan Confusion Matrix Split Dataset 90:10
+Selanjutnya dilakukan perhitungan matriks evaluasi seperti accuracy, precision,
+dan recall menggunakan data yang diperoleh dari perhitungan confusion matrix.
+
+59
+4.5.1.1
+
+Perhitungan Accuracy
+
+Proses perhitungan nilai accuracy model dilakukan menggunakan Persamaan
+3.1 berikut:
+Accuracy =
+
+(T P + T N)
+× 100%
+(T P + T N + FP + FN)
+
+Accuracy =
+
+(129 + 146)
+× 100%
+(129 + 146 + 23 + 27)
+
+Accuracy =
+4.5.1.2
+
+275
+× 100% = 84%
+325
+
+Perhitungan Precision
+
+Proses perhitungan nilai precision model dilakukan menggunakan Persamaan
+3.2 sebagai berikut:
+
+4.5.1.3
+
+Precision =
+
+TP
+× 100%
+(T P + FP)
+
+Precision =
+
+129
+× 100%
+(129 + 23)
+
+Precision =
+
+129
+× 100% = 85%
+152
+
+Perhitungan Recall
+
+Proses perhitungan nilai recall model dilakukan menggunakan Persamaan 3.3
+sebagai berikut:
+Recall =
+
+TP
+× 100%
+(T P + FN)
+
+Recall =
+
+129
+× 100%
+(129 + 27)
+
+60
+
+Recall =
+
+129
+× 100% = 83%
+156
+
+Hasil perhitungan presicion dan recall kemudian divisualisasikan dalam bentuk grafik untuk mempermudah pemahaman terhadap hasil perhitungan yang telah
+dilakukan. Berikut adalah kode program untuk melakukan visualisasi tersebut.
+
+python val . py
+
+Gambar 4.10 Grafik Precision-Recall Curve
+Gambar 4.10 menunjukkan grafik precision-recall curve pada kelas positif (kantuk) dan negatif (terjaga) yang cukup baik, dengan nilai yang hampir sama pada
+setiap metrik evaluasi.
+
+4.5.2
+
+Hasil Evaluation Model Dengan Split Dataset 80:20
+
+Berdasarkan Gambar 4.11, diketahui bahwa jumlah data True Positive (TP) adalah 132 dan jumlah data False Positive (FP) adalah 27. Selain itu, terdapat 30 data
+False Negative (FN) dan 136 data True Negative (TN).
+
+61
+
+Gambar 4.11 Perhitungan Confusion Matrix Split Dataset 80:20
+Selanjutnya dilakukan perhitungan matriks evaluasi seperti accuracy, precision,
+dan recall menggunakan data yang diperoleh dari perhitungan confusion matrix.
+4.5.2.1
+
+Perhitungan Accuracy
+
+Proses perhitungan nilai accuracy model dilakukan menggunakan Persamaan
+3.1 berikut:
+Accuracy =
+
+(T P + T N)
+× 100%
+(T P + T N + FP + FN)
+
+Accuracy =
+
+(132 + 136)
+× 100%
+(132 + 136 + 27 + 30)
+
+Accuracy =
+4.5.2.2
+
+268
+× 100% = 82%
+325
+
+Perhitungan Precision
+
+Proses perhitungan nilai precision model dilakukan menggunakan Persamaan
+3.2 sebagai berikut:
+Precision =
+
+TP
+× 100%
+(T P + FP)
+
+62
+
+4.5.2.3
+
+Precision =
+
+132
+× 100%
+(132 + 27)
+
+Precision =
+
+132
+× 100% = 83%
+159
+
+Perhitungan Recall
+
+Proses perhitungan nilai recall model dilakukan menggunakan Persamaan 3.3
+sebagai berikut:
+Recall =
+
+TP
+× 100%
+(T P + FN)
+
+Recall =
+
+132
+× 100%
+(132 + 30)
+
+Recall =
+
+132
+× 100% = 81%
+162
+
+Hasil perhitungan presicion dan recall kemudian divisualisasikan dalam bentuk grafik untuk mempermudah pemahaman terhadap hasil perhitungan yang telah
+dilakukan. Berikut adalah kode program untuk melakukan visualisasi tersebut.
+
+python val . py
+
+63
+
+Gambar 4.12 Grafik Precision-Recall Curve
+Gambar 4.12 menunjukkan grafik precision-recall curve pada kelas positif (kantuk) dan negatif (terjaga) yang cukup baik, dengan nilai yang hampir sama pada
+setiap metrik evaluasi.
+
+4.5.3
+
+Hasil Perbandingan Evaluation
+
+Hasil evaluation mengunakan 325 dataset testing pada model dengan split dataset 90:10 dan 80:20 kemudian ditampilkan pada Tabel 4.9.
+Tabel 4.9 Hasil Evaluation
+No
+1
+2
+
+Split Dataset
+90:10
+80:20
+
+Accuracy
+84%
+82%
+
+Precision
+85%
+83%
+
+Recall
+83%
+81%
+
+Berdasarkan hasil evaluation yang ditampilkan pada Tabel 4.9 dapat disimpulkan bahwa model yang dilatih menggunakan split dataset dengan perbandingan 90:10 memiliki performa yang baik dalam melakukan deteksi dibanding model
+yang dilatih menggunakan split dataset dengan perbandingan 80:20, dengan tingkat
+accuracy sebesar 84%. Accuracy model dapat ditingkatkan dengan beberapa cara,
+salah satunya adalah dengan menambah jumlah dataset yang digunakan. Precision
+dan recall juga cukup baik, dengan nilai precision sebesar 85% serta nilai recall
+sebesar 83%.
+
+64
+
+4.6
+
+Hasil Deployment
+
+Pembuatan aplikasi desktop ini menggunakan bahasa pemrograman Python dimana akan menampilkan beberapa halaman yang memuat hasil dari deteksi maupun
+visualisasinya. Menu aplikasi ini terdiri dari menu utama, data preparation, modeling, evaluation, detect dan detect realtime.
+
+4.6.1
+
+Menu Utama
+
+Menu utama akan memuat penjelasan singkat mengenai kantuk. Menu ini akan
+menjadi halaman pertama yang ditampilkan ketika aplikasi dijalankan. Pada menu
+utama ini juga dapat memilih menu lain yang ingin dituju. Tampilan menu utama
+dapat dilihat pada Gambar 4.13.
+
+Gambar 4.13 Menu Utama
+
+4.6.2
+
+Menu Data Preparation
+
+Menu data preparation akan menampilkan proses pengolahan dataset sebelum
+dilakukan proses modeling. Menu ini terdiri dari tiga tab, dengan tab dataset sebagai tab utama yang tampil ketika menu data preparation dibuka. Dataset akan
+diinput dan dilakukan resize pada dataset menjadi ukuran 640x480 piksel. Hasil
+dari proses resize tersebut kemudian ditampilkan dalam bentuk Gambar. Tampilan
+tab dataset dapat dilihat pada Gambar 4.14.
+
+65
+
+Gambar 4.14 Tab Dataset
+Tab kedua pada menu Data Preparation adalah tab Labeling yang akan mengarahkan pengguna ke LabelImg untuk melakukan pelabelan pada dataset yang telah
+di-resize. Tampilan tab labeling dapat dilihat pada Gambar 4.15.
+
+Gambar 4.15 Tab Labeling
+Tab Hasil merupakan tab terakhir pada menu Data Preparation, pada tab ini ditampilkan hasil pelabelan dataset berupa file anotasi YOLO dan isi dari file tersebut.
+Tampilan tab Hasil dapat dilihat pada Gambar 4.16.
+
+66
+
+Gambar 4.16 Tab Hasil
+
+4.6.3
+
+Menu Modeling
+
+Menu Modeling akan melatih model yang telah diproses pada menu data preparation. Menu ini terdiri dari dua tab, dengan tab pelatihan sebagai tab utama yang
+tampil ketika menu modeling dibuka.
+Pada tab pelatihan, split dataset akan dilakukan dengan perbandingan 90:10.
+Dataset kemudian dilatih menggunakan algoritma YOLOv5 dengan konfigurasi parameter batch size dan epochs yang telah diinput. Performa model selama pelatihan
+juga akan ditampilkan dalam bentuk nilai mAP 0.5.Tampilan tab pelatihan dapat
+dilihat pada Gambar 4.17.
+
+67
+
+Gambar 4.17 Tab Pelatihan
+Dataset yang telah dilatih kemudian akan menghasilkan model YOLOv5. Model tersebut kemudian akan dikonversi ke format ONNX pada tab Convert untuk
+memungkinkan deteksi secara realtime. Tampilan tab convert dapat dilihat pada
+Gambar 4.18.
+
+Gambar 4.18 Tab Convert
+
+4.6.4
+
+Menu Evaluation
+
+Menu Evaluation akan menampilkan performa model yang diuji menggunakan
+dataset testing. Performa model divisualisasikan dalam confusion matrix dan akan
+
+68
+dihitung menggunakan metriks accuracy, precision dan recall. Tampilan menu
+Evaluation dapat dilihat pada Gambar 4.19.
+
+Gambar 4.19 Menu Evaluation
+
+4.6.5
+
+Menu Detect
+
+Menu Detect akan menampilkan hasil deteksi kantuk yang berupa prediksi dari
+model YOLOV5 yang digunakan. Hasil deteksi tersebut akan ditampilkan dalam
+bentuk gambar hasil prediksi. Tampilan menu Detect dapat dilihat pada Gambar
+4.20.
+
+Gambar 4.20 Menu Detect
+
+69
+
+4.6.6
+
+Menu Detect Realtime
+
+Menu terakhir yang diterapkan pada aplikasi merupakan menu detect realtime
+yang dapat mendeteksi kantuk secara realtime. Menu ini akan ditampilkan dalam
+tiga frame yaitu, Realtime Feed, Detection Info dan Detected Faces yang ditampilkan pada Gambar 4.21.
+
+Gambar 4.21 Menu Detect Realtime
+Frame realtime feed akan menampilkan wajah pengemudi secara realtime yang
+diperoleh dari kamera webcam. Wajah yang terdeteksi akan diteruskan ke frame
+detection info. Frame detection info akan menampilkan wajah pengemudi yang terdeteksi. Pada wajah yang terdeteksi, akan muncul bounding box yang mengelilingi
+wajah pengemudi beserta confidence score-nya. Program akan memainkan alarm
+peringatan jika wajah pengemudi terdeteksi mengantuk. Frame detected faces akan
+menampilkan gambar output yang terdeteksi dari frame detection info. Output yang
+ditampilkan berupa wajah pengemudi yang terdeteksi yang sudah di-crop.
+
+4.6.7
+
+Hasil Pengujian
+
+Aplikasi akan diuji dalam dua tahap untuk mendeteksi kantuk pada pengemudi secara realtime, yaitu pengujian pada siang hari dan malam hari menggunakan
+dua kamera webcam dengan resolusi yang berbeda, yaitu 720p dan 1080p, untuk
+memastikan kemampuan deteksi kantuk pengemudi yang sesuai dengan indikator
+pada wajah pengemudi. Hasil pengujian menggunakan kamera webcam 1080p ditampilkan pada Tabel 4.10 dan Tabel 4.11, sedangkan hasil pengujian menggunakan
+
+70
+kamera webcam 720p ditampilkan pada 4.12 dan 4.13.
+Tabel 4.10 Hasil Pengujian Pada Siang Hari Menggunakan Kamera Webcam 1080p
+No
+1
+
+Indikator
+Mata
+terpejam,
+mulut
+menguap
+
+Hasil
+
+Keterangan
+Akurat
+
+2
+
+Mata
+terpejam,
+mulut
+tertutup
+
+Akurat
+
+3
+
+Mata
+terbuka,
+mulut
+menguap
+
+Akurat
+
+71
+Tabel 4.11 Hasil Pengujian Pada Malam Hari Menggunakan Kamera Webcam
+1080p
+No
+1
+
+Indikator
+Mata
+terpejam,
+mulut
+menguap
+
+Hasil
+
+Keterangan
+Akurat
+
+2
+
+Mata
+terpejam,
+mulut
+tertutup
+
+Akurat
+
+3
+
+Mata
+terbuka,
+mulut
+menguap
+
+Akurat
+
+72
+Tabel 4.12 Hasil Pengujian Pada Siang Hari Menggunakan Kamera Webcam 720p
+No
+1
+
+Indikator
+Mata
+terpejam,
+mulut
+menguap
+
+Hasil
+
+Keterangan
+Akurat
+
+2
+
+Mata
+terpejam,
+mulut
+tertutup
+
+Tidak akurat,
+terkadang
+terdeteksi
+terjaga
+
+3
+
+Mata
+terbuka,
+mulut
+menguap
+
+Akurat
+
+73
+Tabel 4.13 Hasil Pengujian Pada Malam Hari Menggunakan Kamera Webcam 720p
+No
+1
+
+Indikator
+Mata
+terpejam,
+mulut
+menguap
+
+Hasil
+
+Keterangan
+Akurat
+
+2
+
+Mata
+terpejam,
+mulut
+tertutup
+
+Tidak akurat,
+terkadang
+terdeteksi
+terjaga
+
+3
+
+Mata
+terbuka,
+mulut
+menguap
+
+Akurat
+
+Hasil pengujian secara realtime menunjukkan bahwa aplikasi mampu mendeteksi tiga indikator kantuk pada pengemudi, yaitu mata terpejam dengan mulut
+menguap, mata terpejam dengan mulut tertutup dan mata terbuka dengan mulut
+menguap, dengan cukup akurat pada siang dan malam hari menggunakan kamera
+webcam beresolusi 1080p, seperti yang tertera pada Tabel 4.10 dan Tabel 4.11. Pada kamera webcam dengan resolusi yang lebih rendah, yaitu 720p, nilai confidence
+
+74
+score pada masing-masing indikator lebih rendah dan aplikasi mengalami kesulitan dalam mendeteksi kantuk dengan indikator mata terpejam dan mulut tertutup,
+seperti yang terlihat pada Tabel 4.12 dan Tabel 4.13.
+Perlu diperhatikan bahwa pada kondisi malam hari, pengemudi harus menggunakan sumber cahaya tambahan seperti lampu mobil atau lampu jalan, untuk
+memperoleh gambar atau video yang cukup terang agar aplikasi dapat mendeteksi
+kantuk dengan akurat. Aplikasi akan memberikan peringatan kepada pengemudi
+dalam bentuk alarm jika terdeteksi kantuk. Hal ini dapat membantu menghindari
+terjadinya kecelakaan akibat kantuk saat mengemudi.
+
+BAB 5
+KESIMPULAN DAN SARAN
+5.1
+
+Kesimpulan
+
+Hasil penelitian ini menunjukkan bahwa model yang dilatih menggunakan algoritma YOLOv5 dengan dataset training berjumlah 247 gambar dan split dataset
+dengan perbandingan 90:10 berhasil mendeteksi kantuk pada pengemudi kendaraan bermotor dengan tepat dan akurat. Berdasarkan hasil evaluasi menggunakan 325
+dataset testing dan perhitungan confusion matrix, model memiliki performa yang
+cukup baik dalam melakukan deteksi, dengan tingkat accuracy sebesar 84%, precision sebesar 85% dan recall sebesar 83%.
+Hasil implementasi pada aplikasi desktop menunjukkan bahwa aplikasi dapat
+mendeteksi kantuk pada pengemudi secara realtime dengan akurat pada siang hari.
+Pada malam hari, pengemudi harus menggunakan sumber cahaya tambahan seperti
+lampu mobil atau lampu jalan, agar gambar atau video yang diperoleh cukup terang untuk aplikasi dapat mendeteksi kantuk dengan akurat. Selain itu, akurasi dari
+deteksi kantuk juga dipengaruhi oleh resolusi kamera webcam yang digunakan.
+
+5.2
+
+Saran
+
+Akurasi model deteksi kantuk dapat ditingkatkan dengan menerapkan beberapa
+saran, seperti menambah jumlah dataset yang lebih banyak dan beragam agar model
+dapat mempelajari lebih banyak fitur dan pola dari data, menggunakan spesifikasi
+komputer dengan kapasitas RAM dan GPU yang lebih baik untuk meningkatkan
+kecepatan proses deteksi dan menangani beban kerja yang lebih berat, serta mempertimbangkan penggunaan teknologi infrared pada kamera atau sensor tambahan
+untuk meningkatkan akurasi deteksi pada kondisi pencahayaan yang minim, terutama pada malam hari.
+
+75
+
+DAFTAR PUSTAKA
+[Al Faruqi, 2021] Al Faruqi, M. (2021). Sistem Pemetaan Posisi Objek Kendaraan Menggunakan Pengolahan Citra Pada Area 360Â°. PhD thesis, Universitas
+Komputer Indonesia.
+[Amira et al., 2021] Amira, B. G., Zoulikha, M. M., and Hector, P. (2021). Driver
+drowsiness detection and tracking based on yolo with haar cascades and ernn.
+Journal homepage: http://iieta. org/journals/ijsse, 11(1):35–42.
+[Andika and Hafiz, 2018] Andika, T. H. and Hafiz, A. (2018). Analisis perbandingan segmentasi citra menggunakan metode k-means dan fuzzy c-means. In
+Prosiding Seminar Nasional Darmajaya, volume 1, pages 237–246.
+[Ardiansyah et al., 2022] Ardiansyah, M. R., Supit, Y., and Said, M. S. (2022). Sistem visi komputer untuk kalkulasi kepadatan kendaraan menggunakan algoritma
+yolo. Simtek: jurnal sistem informasi dan teknik komputer, 7(1):52–59.
+[Arrofiqoh and Harintaka, 2018] Arrofiqoh, E. N. and Harintaka, H. (2018). Implementasi metode convolutional neural network untuk klasifikasi tanaman pada
+citra resolusi tinggi. Geomatika, 24(2):61–68.
+[Cvahte Ojsterek and Topolek, 2019] Cvahte Ojsterek, T. and Topolek, D. (2019).
+Influence of drivers visual and cognitive attention on their perception of changes
+in the traffic environment. European Transport Research Review, 11(1):1–9.
+[Dipu et al., 2021] Dipu, M. T. A., Hossain, S. S., Arafat, Y., and Rafiq, F. B.
+(2021). Real-time driver drowsiness detection using deep learning. International
+Journal of Advanced Computer Science and Applications, 12(7).
+[Faraji et al., 2021] Faraji, F., Lotfi, F., Khorramdel, J., Najafi, A., and Ghaffari,
+A. (2021). Drowsiness detection based on driver temporal behavior using a new
+developed dataset. arXiv preprint arXiv:2104.00125.
+[Fermansah, 2019] Fermansah, D. (2019). Penggunaan Metode Traditional Transformations Data Augmentation Untuk Peningkatan Hasil Akurasi Pada Model
+Algoritma Convolutional Neural Network (Cnn) Di Klasifikasi Gambar. PhD
+thesis, Universitas Siliwangi.
+
+76
+
+77
+[Ganguly et al., 2022] Ganguly, B., Dey, D., and Munshi, S. (2022). An attention
+deep learning framework based drowsiness detection model for intelligent transportation system.
+[Handayani and Pratama, 2019] Handayani, V. R. and Pratama, N. P. (2019). Sistem informasi penjualan gula merah serbuk berbasis web pada home industri
+gula merah serbuk dalban permana purbalingga. Evolusi: Jurnal Sains dan Manajemen, 7(2).
+[Hidayatulloh, 2021] Hidayatulloh, M. S. (2021). TA: Sistem Pengenalan Wajah
+Menggunakan Metode YOLO (You Only Look Once). PhD thesis, Universitas
+Dinamika.
+[Imantiyar, 2021] Imantiyar, R. (2021). Pengaruh bias dataset terhadap performa
+akurasi deteksi objek pada arsitektur efficientdet-lite.
+[Iskandar, 2022] Iskandar,
+V. B. (2022).
+Kecelakaan lalu lintas meningkat,
+capai 94 ribu kasus sampai september 2022.
+https://databoks.katadata.co.id/datapublish/2022/11/22/kecelakaan-lalulintas-meningkat-capai-94-ribu-kasus-sampai-september-2022. Diakses pada
+13 mei 2023.
+[Jay, 2022] Jay (2022). Pengantar yolo: Deteksi objek waktu nyata.
+tps://hashdork.com/id/yolo/. Diakses Pada 26 Agustus 2023.
+
+ht-
+
+[Jiang et al., 2022] Jiang, P., Ergu, D., Liu, F., Cai, Y., and Ma, B. (2022). A review
+of yolo algorithm developments. Procedia Computer Science, 199:1066–1073.
+[Jumadi et al., 2021] Jumadi, J., Yupianti, Y., and Sartika, D. (2021). Pengolahan
+citra digital untuk identifikasi objek menggunakan metode hierarchical agglomerative clustering. JST (Jurnal Sains Dan Teknologi), 10(2):148–156.
+[Jupiyandi et al., 2019] Jupiyandi, S., Saniputra, F. R., Pratama, Y., Dharmawan,
+M. R., and Cholissodin, I. (2019). Pengembangan deteksi citra mobil untuk
+mengetahui jumlah tempat parkir menggunakan cuda dan modified yolo. Jurnal
+Teknologi Informasi dan Ilmu Komputer, 6(4):413–419.
+[Karlina and Indarti, 2020] Karlina, O. E. and Indarti, D. (2020). Pengenalan objek
+makanan cepat saji pada video dan real time webcam menggunakan metode you
+look only once (yolo). Jurnal Ilmiah Informatika Komputer, 24(3):199–208.
+
+78
+[Kemenkes, 2022] Kemenkes (2022). Lama waktu tidur yang dibutuhkan oleh
+tubuh. https://upk.kemkes.go.id/new/lama-waktu-tidur-yang-dibutuhkan-olehtubuh. Diakses pada 13 Mei 2023.
+[Kuddus, 2021] Kuddus, M. K. F. (2021). SISTEM PRESENSI PEGAWAI BERBASIS VISI KOMPUTER. PhD thesis, Universitas Hasanuddin.
+[Liu et al., 2018] Liu, C., Tao, Y., Liang, J., Li, K., and Chen, Y. (2018). Object
+detection based on yolo network. In 2018 IEEE 4th information technology and
+mechatronics engineering conference (ITOEC), pages 799–803. IEEE.
+[Maior et al., 2020] Maior, C. B. S., das Chagas Moura, M. J., Santana, J. M. M.,
+and Lins, I. D. (2020). Real-time classification for autonomous drowsiness detection using eye aspect ratio. Expert Systems with Applications, 158:113505.
+[Maulana, 2022] Maulana, M. A. (2022). Deteksi kantuk pada pengendara roda
+empat melalui citra wajah menggunakan metode facial landmark.
+[Mirunalini et al., 2021] Mirunalini, K. et al. (2021). Drowsiness detection using
+deep neural network. Turkish Journal of Computer and Mathematics Education
+(TURCOMAT), 12(9):317–326.
+[Mulyana and Rofik, 2022] Mulyana, D. I. and Rofik, M. A. (2022). Implementasi
+deteksi real time klasifikasi jenis kendaraan di indonesia menggunakan metode
+yolov5. Jurnal Pendidikan Tambusai, 6(3):13971–13982.
+[Munawar, 2023] Munawar,
+M.
+R.
+(2023).
+Comparing yolov5 and yolov8:
+Which one should you use?
+https://muhammadrizwanmunawar.medium.com/comparing-yolov5-and-yolov8which-one-should-you-use-538ca550a25d. Diakses pada 26 Agustus 2023.
+[Munir, 2004] Munir, R. (2004). Pengolahan citra digital dengan pendekatan algoritmik. Informatika, Bandung, 260.
+[Nanda et al., 2022] Nanda, I. G. R. A. G., Kusdibyo, K., and Supriyanto, S.
+(2022). Analisis faktor human error, hewan, cuaca dan rambu-rambu lalu lintas
+terhadap terjadinya kecelakaan lalu-lintas pada jalan raya denpasar-gilimanuk
+kabupaten jembrana bali. Jurnal Ekonomi, Bisnis dan Manajemen, 1(1):1–10.
+[Nissa, 2023] Nissa, N. K. (2023). Cara kerja object detection dengan yolo (you
+only look once). https://pacmann.io/blog/cara-kerja-object-detection-denganyolo. Diakses pada 5 Maret 2023.
+
+79
+[Pamungkas, 2019] Pamungkas,
+A.
+(2019).
+Pengenalan
+pola.
+https://pemrogramanmatlab.com/pengenalan-pola-citra-digital-menggunakanmatlab/. Diakses pada 28 Juli 2023.
+[Rahma et al., 2021] Rahma, L., Syaputra, H., Mirza, A. H., and Purnamasari, S. D.
+(2021). Objek deteksi makanan khas palembang menggunakan algoritma yolo
+(you only look once). Jurnal Nasional Ilmu Komputer, 2(3):213–232.
+[Ramadhan, 2022] Ramadhan, M. A. (2022). COMPUTER VISION UNTUK
+MENGETAHUI KEMATANGAN JAMBU KRISTAL MENGGUNAKAN METODE CONVOLUTIONAL NEURAL NETWORK. PhD thesis, UPN’Veteran" Yogyakarta.
+[Ratna, 2020] Ratna, S. (2020). Pengolahan citra digital dan histogram dengan
+phyton dan text editor phycharm. Technologia: Jurnal Ilmiah, 11(3):181–186.
+[Rosaly and Prasetyo, 2019] Rosaly, R. and Prasetyo, A. (2019). Pengertian flowchart beserta fungsi dan simbol-simbol flowchart yang paling umum digunakan. Program Studi Teknik Informatika Politeknik Purbaya.
+[Ruslidiantoro, 2021] Ruslidiantoro, A. (2021). Overfitting dan underfitting.
+https://ariprusli.medium.com/overfitting-dan-underfitting-7f9e686aa97d. Diakses pada 13 Mei 2023.
+[Setiawan et al., 2021] Setiawan, A. B., Rachmawati, W., Arrahman, A. T., Natasyah, N., et al. (2021). Aplikasi monitoring stok barang berbasis web pada pt.
+intermetal indo mekanika. ADI Bisnis Digital Interdisiplin Jurnal, 2(2):1–6.
+[Siahaan et al., 2020] Siahaan, M., Jasa, C. H., Anderson, K., Valentino, M., Lim,
+S., and Yudianto, W. (2020). Penerapan artificial intelligence (ai) terhadap seorang penyandang disabilitas tunanetra. Journal Of Information System And Technology, 1(2):186–193.
+[Sinha et al., 2021] Sinha, A., Aneesh, R., and Gopal, S. K. (2021). Drowsiness
+detection system using deep learning. pages 1–6.
+[Sofia, 2018] Sofia,
+N. (2018).
+Convolutional neural network.
+https://medium.com/@nadhifasofia/1-convolutional-neural-networkconvolutional-neural-network-merupakan-salah-satu-metode-machine28189e17335b. Diakses pada 7 April 2023.
+
+80
+[Softscients, 2023] Softscients (2023). Bagaimana mengubah model pytorch
+menjadi onnx. https://softscients.com/2023/02/02/bagaimana-mengubah-modelpytorch-menjadi-onnx/. Diakses pada 8 April 2023.
+[Solawetz, 2020] Solawetz, J. (2020). What is mean average precision (map) in
+object detection? https://blog.roboflow.com/mean-average-precision/. Diakses
+pada 15 Juli 2023.
+[Suni, 2022] Suni,
+E.
+(2022).
+https://www.sleepfoundation.org/drowsy-driving.
+2023.
+
+Drowsy
+driving.
+Diakses pada 23 Mei
+
+[Susanto et al., 2021] Susanto, S., Budiarjo, D. D., Hendrawan, A., and Pungkasanti, P. T. (2021). The implementation of intelligent systems in automating vehicle detection on the road. IAES International Journal of Artificial Intelligence,
+10(3):571.
+[Yulianti S, 2020] Yulianti S, H. (2020). Klasifikasi Tanaman Obat Menggunakan
+Metode Gray Level Co-Occurrence Matrix Dan Support Vector Machine. PhD
+thesis, Universitas Komputer Indonesia.
+
+
