@@ -20,12 +20,11 @@ Gunakan **VS Code** dengan ekstensi **LaTeX Workshop** (Sangat Direkomendasikan)
 
 ### 3. Instalasi Perl (Direkomendasikan)
 
-Perl diperlukan agar fitur otomatisasi seperti `latexmk` atau pembuatan indeks/glossary dapat berjalan dengan lancar di Windows.
+Perl diperlukan agar fitur otomatisasi seperti `latexmk` atau pembuatan indeks/glossary dapat berjalan dengan lancar.
 
-- Download installer di: [strawberryperl.com](https://strawberryperl.com/).
-- Pilih versi **Recommended (64-bit MSI)**.
-- Jalankan installer dan ikuti instruksi hingga selesai.
-- Verifikasi dengan menjalankan perintah `perl -v` di Terminal atau PowerShell.
+- **Windows:** Download installer di [strawberryperl.com](https://strawberryperl.com/). Pilih versi **Recommended (64-bit MSI)**.
+- **macOS:** Perl biasanya sudah terinstal secara bawaan. Jika belum, Anda bisa menginstalnya via Homebrew dengan perintah `brew install perl`.
+- **Verifikasi:** Jalankan perintah `perl -v` di Terminal atau PowerShell untuk memastikan Perl sudah terinstal.
 
 ---
 
